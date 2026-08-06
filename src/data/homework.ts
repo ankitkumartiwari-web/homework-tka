@@ -37,6 +37,7 @@ export const homework: Subject[] = [
             date: '2026-08-06',
             description: 'HTML list project created on 6 Aug 2026.',
             live: '/aug6.html',
+            github: 'https://github.com/ankitkumartiwari-web/homework-tka/blob/main/public/aug6.html',
           },
           {
             id: 2,
@@ -45,6 +46,7 @@ export const homework: Subject[] = [
             date: '2026-08-06',
             description: 'HTML navigation bar project created on 6 Aug 2026.',
             live: '/nav.html',
+            github: 'https://github.com/ankitkumartiwari-web/homework-tka/blob/main/public/nav.html',
           },
         ],
       },

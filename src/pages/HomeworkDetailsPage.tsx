@@ -1,4 +1,4 @@
-import { Calendar, CheckCircle2, ClipboardList, FolderGit2 } from 'lucide-react';
+import { Calendar, CheckCircle2, ClipboardList } from 'lucide-react';
 import type { ReactNode, SyntheticEvent } from 'react';
 import { useParams } from 'react-router-dom';
 import { Breadcrumb } from '../components/Breadcrumb';
@@ -92,8 +92,8 @@ export function HomeworkDetailsPage() {
             <div className="mt-6 grid gap-3">
               <Button href={getPublicAssetPath(homework.live)}>Open Project</Button>
               {homework.github ? (
-                <Button href={homework.github} variant="secondary" icon={<FolderGit2 size={16} aria-hidden="true" />}>
-                  View GitHub Repository
+                <Button href={homework.github} variant="secondary" icon={<GitHubMark />}>
+                  View Code on GitHub
                 </Button>
               ) : null}
             </div>
@@ -113,6 +113,14 @@ function Detail({ icon, label, value }: { icon?: ReactNode; label: string; value
         <p className="mt-1 text-sm font-medium text-slate-900 dark:text-zinc-100">{value}</p>
       </div>
     </div>
+  );
+}
+
+function GitHubMark() {
+  return (
+    <svg aria-hidden="true" viewBox="0 0 24 24" className="size-4 fill-current">
+      <path d="M12 2C6.48 2 2 6.58 2 12.26c0 4.53 2.87 8.37 6.84 9.73.5.1.68-.22.68-.48 0-.24-.01-1.04-.02-1.89-2.78.62-3.37-1.22-3.37-1.22-.46-1.2-1.12-1.52-1.12-1.52-.92-.64.07-.63.07-.63 1.02.07 1.56 1.06 1.56 1.06.9 1.57 2.36 1.12 2.93.86.09-.67.35-1.12.63-1.38-2.22-.26-4.56-1.14-4.56-5.08 0-1.12.39-2.03 1.03-2.75-.1-.26-.45-1.32.1-2.76 0 0 .84-.27 2.75 1.05a9.3 9.3 0 0 1 2.5-.34c.85 0 1.71.12 2.5.34 1.9-1.32 2.74-1.05 2.74-1.05.56 1.44.21 2.5.11 2.76.64.72 1.02 1.63 1.02 2.75 0 3.95-2.35 4.81-4.58 5.06.36.32.69.95.69 1.92 0 1.39-.01 2.5-.01 2.84 0 .26.18.59.69.49A10.27 10.27 0 0 0 22 12.26C22 6.58 17.52 2 12 2Z" />
+    </svg>
   );
 }
 
