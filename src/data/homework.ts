@@ -36,7 +36,7 @@ export const homework: Subject[] = [
             slug: 'list-project',
             date: '2026-08-06',
             description: 'HTML list project created on 6 Aug 2026.',
-            live: '/homework/html/6-aug-2026/aug6.html',
+            live: '/aug6.html',
           },
           {
             id: 2,
@@ -44,7 +44,7 @@ export const homework: Subject[] = [
             slug: 'navigation-bar',
             date: '2026-08-06',
             description: 'HTML navigation bar project created on 6 Aug 2026.',
-            live: '/homework/html/6-aug-2026/nav.html',
+            live: '/nav.html',
           },
         ],
       },
