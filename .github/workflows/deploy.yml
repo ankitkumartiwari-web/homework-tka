@@ -8,4 +8,5 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Confirm workflow file is valid
-        run: echo "Workflow file restored for editor validation."
+        run: |
+          echo "Workflow file restored for editor validation."
