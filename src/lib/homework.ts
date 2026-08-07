@@ -57,10 +57,10 @@ function getRuntimeBasePath() {
     return '/';
   }
 
-  const subjectIndex = window.location.pathname.indexOf('/subject/');
+  const firstPathSegment = window.location.pathname.split('/').filter(Boolean)[0];
 
-  if (subjectIndex > 0) {
-    return `${window.location.pathname.slice(0, subjectIndex)}/`;
+  if (firstPathSegment) {
+    return `/${firstPathSegment}/`;
   }
 
   return '/';
