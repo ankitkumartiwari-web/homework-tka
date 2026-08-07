@@ -50,6 +50,21 @@ export const homework: Subject[] = [
           },
         ],
       },
+      {
+        day: '7-aug-2026',
+        label: '7 Aug 2026',
+        homeworks: [
+          {
+            id: 3,
+            title: 'Video and Image Embedding',
+            slug: 'multimedia',
+            date: '2026-08-07',
+            description: 'HTML multimedia project with an iframe, video, and image embedding.',
+            live: '/homework/html/7-aug-2026/multimedia.html',
+            github: 'https://github.com/ankitkumartiwari-web/homework-tka/blob/main/public/homework/html/7-aug-2026/multimedia.html',
+          },
+        ],
+      },
     ],
   },
 ];
