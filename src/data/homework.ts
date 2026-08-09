@@ -37,7 +37,8 @@ export const homework: Subject[] = [
             date: '2026-08-06',
             description: 'HTML list project created on 6 Aug 2026.',
             live: '/aug6.html',
-            github: 'https://github.com/ankitkumartiwari-web/homework-tka/blob/main/public/aug6.html',
+            github:
+              'https://github.com/ankitkumartiwari-web/homework-tka/blob/main/public/aug6.html',
           },
           {
             id: 2,
@@ -46,10 +47,12 @@ export const homework: Subject[] = [
             date: '2026-08-06',
             description: 'HTML navigation bar project created on 6 Aug 2026.',
             live: '/nav.html',
-            github: 'https://github.com/ankitkumartiwari-web/homework-tka/blob/main/public/nav.html',
+            github:
+              'https://github.com/ankitkumartiwari-web/homework-tka/blob/main/public/nav.html',
           },
         ],
       },
+
       {
         day: '7-aug-2026',
         label: '7 Aug 2026',
@@ -59,24 +62,21 @@ export const homework: Subject[] = [
             title: 'Video and Image Embedding',
             slug: 'multimedia',
             date: '2026-08-07',
-            description: 'HTML multimedia project with an iframe, video, and image embedding.',
+            description:
+              'HTML multimedia project with an iframe, video, and image embedding.',
             live: '/homework/html/7-aug-2026/multimedia.html',
-            github: 'https://github.com/ankitkumartiwari-web/homework-tka/blob/main/public/homework/html/7-aug-2026/multimedia.html',
+            github:
+              'https://github.com/ankitkumartiwari-web/homework-tka/blob/main/public/homework/html/7-aug-2026/multimedia.html',
           },
-        ],
-      },
-      {
-        day: '7-aug-2026',
-        label: '7 Aug 2026',
-        homeworks: [
           {
-            id: 3,
-            title: 'Resume with images and links',
+            id: 4,
+            title: 'Resume with Images and Links',
             slug: 'resume',
             date: '2026-08-07',
             description: 'HTML resume project with images and links.',
             live: '/homework/html/7-aug-2026/resume.html',
-            github: 'https://github.com/ankitkumartiwari-web/homework-tka/blob/main/docs/homework/html/7-aug-2026/resume.html',
+            github:
+              'https://github.com/ankitkumartiwari-web/homework-tka/blob/main/docs/homework/html/7-aug-2026/resume.html',
           },
         ],
       },
