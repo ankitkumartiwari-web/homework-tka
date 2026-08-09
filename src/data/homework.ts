@@ -65,6 +65,21 @@ export const homework: Subject[] = [
           },
         ],
       },
+      {
+        day: '7-aug-2026',
+        label: '7 Aug 2026',
+        homeworks: [
+          {
+            id: 3,
+            title: 'Resume with images and links',
+            slug: 'resume',
+            date: '2026-08-07',
+            description: 'HTML resume project with images and links.',
+            live: '/homework/html/7-aug-2026/resume.html',
+            github: 'https://github.com/ankitkumartiwari-web/homework-tka/blob/main/docs/homework/html/7-aug-2026/resume.html',
+          },
+        ],
+      },
     ],
   },
 ];
