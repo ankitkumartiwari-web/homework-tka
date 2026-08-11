@@ -96,6 +96,22 @@ export const homework: Subject[] = [
           },
         ],
       },
+      {
+        day: '11-aug-2026',
+        label: '11 Aug 2026',
+        homeworks: [
+          {
+            id: 6,
+            title: 'Student Table',
+            slug: 'student-table',
+            date: '2026-08-11',
+            description: 'HTML table displaying student info with photos.',
+            live: '/homework/html/11-aug-2026/table.html',
+            github:
+              'https://github.com/ankitkumartiwari-web/homework-tka/blob/main/public/homework/html/11-aug-2026/table.html',
+          },
+        ],
+      },
     ],
   },
 ];
