@@ -112,6 +112,23 @@ export const homework: Subject[] = [
           },
         ],
       },
+      {
+        day: '12-aug-2026',
+        label: '12 Aug 2026',
+        homeworks: [
+          {
+            id: 7,
+            title: 'Instagram Login Form',
+            slug: 'form',
+            date: '2026-08-12',
+            description:
+              'HTML form styled as an Instagram login page with name, password, date of birth, and photo upload fields.',
+            live: '/homework/html/12-aug-2026/form.html',
+            github:
+              'https://github.com/ankitkumartiwari-web/homework-tka/blob/main/public/homework/html/12-aug-2026/form.html',
+          },
+        ],
+      },
     ],
   },
 ];
