@@ -142,7 +142,7 @@ export const homework: Subject[] = [
               'User Registration Page for Job is an HTML form designed to collect basic information from a job applicant.',
             live: '/homework/html/13-aug-2026/form.html',
             github:
-              'https://github.com/ankitkumartiwari-web/homework-tka/blob/main/public/homework/html/13-aug-2026/form.html',
+              'https://github.com/ankitkumartiwari-web/homework-tka/blob/main/public/homework/html/13-aug-2026/formtag.html',
           },
         ],
       },
