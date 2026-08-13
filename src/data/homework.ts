@@ -136,7 +136,7 @@ export const homework: Subject[] = [
           {
             id: 8,
             title: 'Form Tags',
-            slug: 'form',
+            slug: 'formtag',
             date: '2026-08-13',
             description:
               'User Registration Page for Job is an HTML form designed to collect basic information from a job applicant.',
