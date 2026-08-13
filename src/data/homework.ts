@@ -129,6 +129,23 @@ export const homework: Subject[] = [
           },
         ],
       },
+      {
+        day: '13-aug-2026',
+        label: '13 Aug 2026',
+        homeworks: [
+          {
+            id: 8,
+            title: 'Form Tags',
+            slug: 'form',
+            date: '2026-08-13',
+            description:
+              'User Registration Page for Job is an HTML form designed to collect basic information from a job applicant.',
+            live: '/homework/html/13-aug-2026/form.html',
+            github:
+              'https://github.com/ankitkumartiwari-web/homework-tka/blob/main/public/homework/html/13-aug-2026/form.html',
+          },
+        ],
+      },
     ],
   },
 ];
