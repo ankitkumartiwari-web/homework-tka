@@ -161,7 +161,7 @@ export const homework: Subject[] = [
             slug: 'sales-sql',
             date: '2026-08-31',
             description: 'DBMS homework file for 31 Aug 2026.',
-            live: '/homework/dbms/31-aug-2026/sales.sql',
+            live: '/homework/dbms/31-aug-2026/sales.html',
             github:
               'https://github.com/ankitkumartiwari-web/homework-tka/blob/main/public/homework/dbms/31-aug-2026/sales.sql',
           },
@@ -177,7 +177,7 @@ export const homework: Subject[] = [
             slug: 'student-sql',
             date: '2026-09-02',
             description: 'DBMS homework file for 2 Sept 2026.',
-            live: '/homework/dbms/2-sept-2026/student.sql',
+            live: '/homework/dbms/2-sept-2026/student.html',
             github:
               'https://github.com/ankitkumartiwari-web/homework-tka/blob/main/public/homework/dbms/2-sept-2026/student.sql',
           },

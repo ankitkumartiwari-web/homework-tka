@@ -1,0 +1,38 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>student.sql</title>
+    <style>
+      body { margin: 0; padding: 32px; background: #0f172a; color: #e2e8f0; font-family: Consolas, Monaco, monospace; }
+      pre { max-width: 960px; margin: 0 auto; padding: 24px; overflow-x: auto; border: 1px solid #334155; border-radius: 8px; background: #111827; line-height: 1.7; white-space: pre-wrap; }
+    </style>
+  </head>
+  <body>
+    <pre>create table student
+    (
+    student_id INT PRIMARY KEY,
+    student_name Varchar(150),
+    gender char(1),
+    email Varchar(150),
+    address Varchar(200)
+    );
+
+INSERT INTO student
+    VALUES
+    (1, 'Raj', 'M', 'raj@xyz.com', 'Pune'),
+    (2, 'Ankit', 'M', 'ankit@xyz.com', 'Mumbai'),
+    (3, 'Priya', 'F', 'priya@xyz.com', 'Delhi'),
+    (4, 'Rahul', 'M', 'rahul@xyz.com', 'Pune'),
+    (5, 'Sneha', 'F', 'sneha@xyz.com', 'Nashik'),
+    (6, 'Aman', 'M', 'aman@xyz.com', 'Bangalore'),
+    (7, 'Neha', 'F', 'neha@xyz.com', 'Mumbai'),
+    (8, 'Rohit', 'M', 'rohit@xyz.com', 'Delhi'),
+    (9, 'Pooja', 'F', 'pooja@xyz.com', 'Pune'),
+    (10, 'Purva', 'F', 'purva@xyz.com', 'Nashik');
+
+SELECT *
+    FROM student;</pre>
+  </body>
+</html>
