@@ -148,4 +148,41 @@ export const homework: Subject[] = [
       },
     ],
   },
+  {
+    subject: 'DBMS',
+    days: [
+      {
+        day: '31-aug-2026',
+        label: '31 Aug 2026',
+        homeworks: [
+          {
+            id: 9,
+            title: 'sales.sql',
+            slug: 'sales-sql',
+            date: '2026-08-31',
+            description: 'DBMS homework file for 31 Aug 2026.',
+            live: '/homework/dbms/31-aug-2026/sales.sql',
+            github:
+              'https://github.com/ankitkumartiwari-web/homework-tka/blob/main/public/homework/dbms/31-aug-2026/sales.sql',
+          },
+        ],
+      },
+      {
+        day: '2-sept-2026',
+        label: '2 Sept 2026',
+        homeworks: [
+          {
+            id: 10,
+            title: 'student.sql',
+            slug: 'student-sql',
+            date: '2026-09-02',
+            description: 'DBMS homework file for 2 Sept 2026.',
+            live: '/homework/dbms/2-sept-2026/student.sql',
+            github:
+              'https://github.com/ankitkumartiwari-web/homework-tka/blob/main/public/homework/dbms/2-sept-2026/student.sql',
+          },
+        ],
+      },
+    ],
+  },
 ];
