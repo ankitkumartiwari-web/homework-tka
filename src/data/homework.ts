@@ -183,6 +183,32 @@ export const homework: Subject[] = [
           },
         ],
       },
+      {
+        day: '11-sept-2026',
+        label: '11 Sept 2026',
+        homeworks: [
+          {
+            id: 11,
+            title: 'assignment1.sql',
+            slug: 'assignment1-sql',
+            date: '2026-09-11',
+            description: 'DBMS homework file for 11 Sept 2026.',
+            live: '/homework/dbms/11-sept-2026/assignment1.html',
+            github:
+              'https://github.com/ankitkumartiwari-web/homework-tka/blob/main/public/homework/dbms/11-sept-2026/assignment1.sql',
+          },
+          {
+            id: 12,
+            title: 'assignment2.sql',
+            slug: 'assignment2-sql',
+            date: '2026-09-11',
+            description: 'DBMS homework file for 11 Sept 2026.',
+            live: '/homework/dbms/11-sept-2026/assignment2.html',
+            github:
+              'https://github.com/ankitkumartiwari-web/homework-tka/blob/main/public/homework/dbms/11-sept-2026/assignment2.sql',
+          },
+        ],
+      },
     ],
   },
 ];
