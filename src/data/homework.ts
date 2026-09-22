@@ -207,18 +207,29 @@ export const homework: Subject[] = [
             github:
               'https://github.com/ankitkumartiwari-web/homework-tka/blob/main/public/homework/dbms/11-sept-2026/assignment2.sql',
           },
-          {
-            id: 13,
-            title: 'operation on name string',
-            slug: 'name-py',
-            date: '2026-09-11',
-            description: 'Use of string methods in Python.',
-            live: '/homework/python/11-sept-2026/name.html',
-            github:
-              'https://github.com/ankitkumartiwari-web/homework-tka/blob/main/docs/homework/python/name.py',
-          },
         ],
       },
     ],
   },
+  {
+  subject: 'Python',
+  days: [
+    {
+      day: '22-sept-2026',
+      label: '22 Sept 2026',
+      homeworks: [
+        {
+          id: 13,
+          title: 'name.py',
+          slug: 'name-py',
+          date: '2026-09-22',
+          description: 'Use of string methods and indexing in Python.',
+          live: '/homework/python/22-sept-2026/name.html',
+          github:
+            'https://github.com/ankitkumartiwari-web/homework-tka/blob/main/public/homework/python/22-sept-2026/name.py',
+        },
+      ],
+    },
+  ],
+},
 ];
