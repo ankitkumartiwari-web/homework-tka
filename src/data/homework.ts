@@ -230,6 +230,22 @@ export const homework: Subject[] = [
         },
       ],
     },
+    {
+      day: '23-sept-2026',
+      label: '23 Sept 2026',
+      homeworks: [
+        {
+          id: 14,
+          title: 'Slicing Operation on Name',
+          slug: 'name-py',
+          date: '2026-09-23',
+          description: 'Slicing operation on name in Python.',
+          live: '/homework/python/23-sept-2026/slicing.html',
+          github:
+            'https://github.com/ankitkumartiwari-web/homework-tka/blob/main/public/homework/python/23-sept-2026/slicing.py',
+        },
+      ],
+    },
   ],
 },
 ];
