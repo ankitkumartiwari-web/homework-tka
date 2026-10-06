@@ -159,7 +159,7 @@ const manualHomework: Subject[] = [
         homeworks: [
           {
             id: 9,
-            title: 'sales.sql',
+            title: 'Sales',
             slug: 'sales-sql',
             date: '2026-08-31',
             description: 'DBMS homework file for 31 Aug 2026.',
@@ -175,7 +175,7 @@ const manualHomework: Subject[] = [
         homeworks: [
           {
             id: 10,
-            title: 'student.sql',
+            title: 'Student',
             slug: 'student-sql',
             date: '2026-09-02',
             description: 'DBMS homework file for 2 Sept 2026.',
@@ -191,7 +191,7 @@ const manualHomework: Subject[] = [
         homeworks: [
           {
             id: 11,
-            title: 'assignment1.sql',
+            title: 'Assignment 1',
             slug: 'assignment1-sql',
             date: '2026-09-11',
             description: 'DBMS homework file for 11 Sept 2026.',
@@ -201,7 +201,7 @@ const manualHomework: Subject[] = [
           },
           {
             id: 12,
-            title: 'assignment2.sql',
+            title: 'Assignment 2',
             slug: 'assignment2-sql',
             date: '2026-09-11',
             description: 'DBMS homework file for 11 Sept 2026.',
@@ -222,7 +222,7 @@ const manualHomework: Subject[] = [
       homeworks: [
         {
           id: 13,
-          title: 'name.py',
+          title: 'Name',
           slug: 'name-py',
           date: '2026-09-22',
           description: 'Use of string methods and indexing in Python.',
