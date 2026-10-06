@@ -17,6 +17,13 @@ function slugify(value) {
   return value.toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/^-+|-+$/g, '');
 }
 
+function displayTitle(fileName) {
+  return path
+    .basename(fileName, path.extname(fileName))
+    .replace(/[-_]+/g, ' ')
+    .replace(/\b\w/g, (character) => character.toUpperCase());
+}
+
 function escapeHtml(value) {
   return value
     .replaceAll('&', '&amp;')
@@ -106,7 +113,7 @@ async function createEntries(files) {
     entries.push({
       subject,
       date,
-      title: fileName,
+      title: displayTitle(fileName),
       slug: slugify(`${baseName}-${extension}`),
       live: `/homework/${webPath}`,
       github: `https://github.com/ankitkumartiwari-web/homework-tka/blob/main/docs/homework/${sourceWebPath}`,
