@@ -15,15 +15,6 @@ export const generatedHomework: Subject[] = [
             "date": "2026-08-31",
             "description": "Homework file sales.html for 31 Aug 2026.",
             "live": "/homework/dbms/31-aug-2026/sales.html",
-            "github": "https://github.com/ankitkumartiwari-web/homework-tka/blob/main/docs/homework/dbms/31-aug-2026/sales.html"
-          },
-          {
-            "id": 1001,
-            "title": "sales.sql",
-            "slug": "sales-sql",
-            "date": "2026-08-31",
-            "description": "Homework file sales.sql for 31 Aug 2026.",
-            "live": "/homework/dbms/31-aug-2026/sales.html",
             "github": "https://github.com/ankitkumartiwari-web/homework-tka/blob/main/docs/homework/dbms/31-aug-2026/sales.sql"
           }
         ]
@@ -54,39 +45,12 @@ export const generatedHomework: Subject[] = [
         "homeworks": [
           {
             "id": 1000,
-            "title": "basanti.png",
-            "slug": "basanti-png",
-            "date": "2026-08-11",
-            "description": "Homework file basanti.png for 11 Aug 2026.",
-            "live": "/homework/html/11-aug-2026/basanti.png",
-            "github": "https://github.com/ankitkumartiwari-web/homework-tka/blob/main/docs/homework/html/11-aug-2026/basanti.png"
-          },
-          {
-            "id": 1001,
-            "title": "jay.png",
-            "slug": "jay-png",
-            "date": "2026-08-11",
-            "description": "Homework file jay.png for 11 Aug 2026.",
-            "live": "/homework/html/11-aug-2026/jay.png",
-            "github": "https://github.com/ankitkumartiwari-web/homework-tka/blob/main/docs/homework/html/11-aug-2026/jay.png"
-          },
-          {
-            "id": 1002,
             "title": "table.html",
             "slug": "table-html",
             "date": "2026-08-11",
             "description": "Homework file table.html for 11 Aug 2026.",
             "live": "/homework/html/11-aug-2026/table.html",
             "github": "https://github.com/ankitkumartiwari-web/homework-tka/blob/main/docs/homework/html/11-aug-2026/table.html"
-          },
-          {
-            "id": 1003,
-            "title": "veeru.png",
-            "slug": "veeru-png",
-            "date": "2026-08-11",
-            "description": "Homework file veeru.png for 11 Aug 2026.",
-            "live": "/homework/html/11-aug-2026/veeru.png",
-            "github": "https://github.com/ankitkumartiwari-web/homework-tka/blob/main/docs/homework/html/11-aug-2026/veeru.png"
           }
         ]
       },
@@ -150,15 +114,6 @@ export const generatedHomework: Subject[] = [
         "homeworks": [
           {
             "id": 1000,
-            "title": "Rickroll.mp4",
-            "slug": "rickroll-mp4",
-            "date": "2026-08-07",
-            "description": "Homework file Rickroll.mp4 for 7 Aug 2026.",
-            "live": "/homework/html/7-aug-2026/Rickroll.mp4",
-            "github": "https://github.com/ankitkumartiwari-web/homework-tka/blob/main/docs/homework/html/7-aug-2026/Rickroll.mp4"
-          },
-          {
-            "id": 1001,
             "title": "multimedia.html",
             "slug": "multimedia-html",
             "date": "2026-08-07",
@@ -167,16 +122,7 @@ export const generatedHomework: Subject[] = [
             "github": "https://github.com/ankitkumartiwari-web/homework-tka/blob/main/docs/homework/html/7-aug-2026/multimedia.html"
           },
           {
-            "id": 1002,
-            "title": "photo.png",
-            "slug": "photo-png",
-            "date": "2026-08-07",
-            "description": "Homework file photo.png for 7 Aug 2026.",
-            "live": "/homework/html/7-aug-2026/photo.png",
-            "github": "https://github.com/ankitkumartiwari-web/homework-tka/blob/main/docs/homework/html/7-aug-2026/photo.png"
-          },
-          {
-            "id": 1003,
+            "id": 1001,
             "title": "resume.html",
             "slug": "resume-html",
             "date": "2026-08-07",
@@ -201,15 +147,6 @@ export const generatedHomework: Subject[] = [
             "slug": "student-attendance-html",
             "date": "2026-10-06",
             "description": "Homework file student-attendance.html for 6 Oct 2026.",
-            "live": "/homework/python/6-oct-2026/student-attendance.html",
-            "github": "https://github.com/ankitkumartiwari-web/homework-tka/blob/main/docs/homework/python/6-oct-2026/student-attendance.html"
-          },
-          {
-            "id": 1001,
-            "title": "student-attendance.py",
-            "slug": "student-attendance-py",
-            "date": "2026-10-06",
-            "description": "Homework file student-attendance.py for 6 Oct 2026.",
             "live": "/homework/python/6-oct-2026/student-attendance.html",
             "github": "https://github.com/ankitkumartiwari-web/homework-tka/blob/main/docs/homework/python/6-oct-2026/student-attendance.py"
           }

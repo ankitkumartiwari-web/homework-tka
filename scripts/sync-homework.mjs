@@ -74,6 +74,7 @@ async function collectFiles(directory, relativeDirectory = '') {
 
 async function createEntries(files) {
   const entries = [];
+  const fileSet = new Set(files);
   for (const relativePath of files.sort()) {
     const parts = relativePath.split(path.sep);
     const date = parts.length >= 3 ? getDate(parts[1]) : null;
@@ -85,23 +86,30 @@ async function createEntries(files) {
     const baseName = path.basename(fileName, path.extname(fileName));
     const webPath = relativePath.split(path.sep).join('/');
     const isCodeFile = ['py', 'sql'].includes(extension.toLowerCase());
-    const livePath = isCodeFile
-      ? `/homework/${webPath.slice(0, -extension.length)}html`
-      : `/homework/${webPath}`;
+    const htmlRelativePath = relativePath.slice(0, -extension.length) + 'html';
+    const hasExistingHtmlPage = fileSet.has(htmlRelativePath);
 
     if (isCodeFile) {
       const source = await readFile(path.join(sourceRoot, relativePath), 'utf8');
       const htmlPath = path.join(publicRoot, relativePath.slice(0, -extension.length) + 'html');
       await writeFile(htmlPath, createCodePage(fileName, source));
+      if (hasExistingHtmlPage) continue;
     }
+
+    if (isCodeFile || extension.toLowerCase() !== 'html') continue;
+
+    const sourceFile = ['py', 'sql']
+      .map((sourceExtension) => `${relativePath.slice(0, -extension.length)}${sourceExtension}`)
+      .find((sourcePath) => fileSet.has(sourcePath));
+    const sourceWebPath = sourceFile ? sourceFile.split(path.sep).join('/') : webPath;
 
     entries.push({
       subject,
       date,
       title: fileName,
       slug: slugify(`${baseName}-${extension}`),
-      live: livePath,
-      github: `https://github.com/ankitkumartiwari-web/homework-tka/blob/main/docs/homework/${webPath}`,
+      live: `/homework/${webPath}`,
+      github: `https://github.com/ankitkumartiwari-web/homework-tka/blob/main/docs/homework/${sourceWebPath}`,
     });
   }
   return entries;
