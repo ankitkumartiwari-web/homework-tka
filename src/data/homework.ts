@@ -1,3 +1,5 @@
+import { generatedHomework } from './homework.generated';
+
 export type Homework = {
   id: number;
   title: string;
@@ -22,7 +24,7 @@ export type Subject = {
   days: HomeworkDay[];
 };
 
-export const homework: Subject[] = [
+const manualHomework: Subject[] = [
   {
     subject: 'HTML',
     days: [
@@ -249,3 +251,35 @@ export const homework: Subject[] = [
   ],
 },
 ];
+
+export const homework: Subject[] = mergeHomework(manualHomework, generatedHomework);
+
+function mergeHomework(manual: Subject[], generated: Subject[]) {
+  const merged = manual.map((subject) => ({
+    ...subject,
+    days: subject.days.map((day) => ({ ...day, homeworks: [...day.homeworks] })),
+  }));
+
+  for (const generatedSubject of generated) {
+    const subject =
+      merged.find((item) => item.subject.toLowerCase() === generatedSubject.subject.toLowerCase()) ??
+      (() => {
+        const newSubject: Subject = { subject: generatedSubject.subject, days: [] };
+        merged.push(newSubject);
+        return newSubject;
+      })();
+
+    for (const generatedDay of generatedSubject.days) {
+      const day = subject.days.find((item) => item.day === generatedDay.day);
+      if (!day) {
+        subject.days.push({ ...generatedDay, homeworks: [...generatedDay.homeworks] });
+        continue;
+      }
+
+      const existingPaths = new Set(day.homeworks.map((item) => item.live));
+      day.homeworks.push(...generatedDay.homeworks.filter((item) => !existingPaths.has(item.live)));
+    }
+  }
+
+  return merged;
+}

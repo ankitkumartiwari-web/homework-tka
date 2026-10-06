@@ -72,3 +72,14 @@ npm run build
 ```
 
 The workflow uploads the `dist` folder and deploys it to your Pages site.
+
+Homework files placed under `docs/homework/<subject>/<date>/` are synchronized
+to `public/homework/`, added to the website catalog, and published
+automatically. For example, adding
+`docs/homework/python/6-oct-2026/example.py` makes it live at
+`/homework/python/6-oct-2026/example.py` after the build workflow completes.
+
+The date folder must use the format `6-oct-2026`. The generated catalog uses
+the filename as the title and links back to the file in GitHub. Python (`.py`)
+and DBMS (`.sql`) files also get a matching dark code-viewer page with the
+same filename and an `.html` extension.
