@@ -95,8 +95,7 @@ async function createEntries(files) {
     const isCodeFile = ['py', 'sql'].includes(extension.toLowerCase());
     const htmlRelativePath = relativePath.slice(0, -extension.length) + 'html';
     const hasExistingHtmlPage = fileSet.has(htmlRelativePath);
-    const hasNotebookPreview = fileSet.has(`${relativePath.slice(0, -extension.length)}ipynb`) ||
-      (extension.toLowerCase() === 'ipynb' && hasExistingHtmlPage);
+    const hasNotebookPreview = extension.toLowerCase() === 'ipynb';
 
     if (isCodeFile) {
       const source = await readFile(path.join(sourceRoot, relativePath), 'utf8');

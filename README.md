@@ -56,7 +56,7 @@ npm run dev
 
 ## GitHub Pages Deployment
 
-This project uses `base: './'` in `vite.config.ts` so built assets work from a GitHub Pages project path.
+This project uses `base: '/homework-tka/'` in `vite.config.ts` so built assets work from the GitHub Pages project path.
 
 GitHub Pages is automated through `.github/workflows/deploy.yml`.
 
