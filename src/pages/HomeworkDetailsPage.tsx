@@ -90,7 +90,7 @@ export function HomeworkDetailsPage() {
               <Detail label="Day" value={dayTitle} />
             </div>
             <div className="mt-6 grid gap-3">
-              <Button href={getPublicAssetPath(homework.live)}>Open Project</Button>
+              {homework.showLive !== false ? <Button href={getPublicAssetPath(homework.live)}>Open Project</Button> : null}
               {homework.github ? (
                 <Button href={homework.github} variant="secondary" icon={<GitHubMark />}>
                   View Code on GitHub
@@ -123,4 +123,3 @@ function GitHubMark() {
     </svg>
   );
 }
-

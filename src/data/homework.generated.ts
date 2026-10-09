@@ -148,6 +148,7 @@ export const generatedHomework: Subject[] = [
             "date": "2026-10-10",
             "description": "Homework file Task1 for 10 Oct 2026.",
             "live": "/homework/python/10-oct-2026/task1.html",
+            "showLive": false,
             "github": "https://github.com/ankitkumartiwari-web/homework-tka/blob/main/docs/homework/python/10-oct-2026/task1.html"
           },
           {
@@ -157,6 +158,7 @@ export const generatedHomework: Subject[] = [
             "date": "2026-10-10",
             "description": "Homework file Task1 for 10 Oct 2026.",
             "live": "/homework/python/10-oct-2026/task1.ipynb",
+            "showLive": false,
             "github": "https://github.com/ankitkumartiwari-web/homework-tka/blob/main/docs/homework/python/10-oct-2026/task1.ipynb"
           }
         ]

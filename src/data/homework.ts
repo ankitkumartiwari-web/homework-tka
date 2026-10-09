@@ -7,6 +7,7 @@ export type Homework = {
   date: string;
   description: string;
   live: string;
+  showLive?: boolean;
   github?: string;
   image?: string;
   teacherNotes?: string;

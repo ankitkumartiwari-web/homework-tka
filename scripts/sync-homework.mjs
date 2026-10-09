@@ -95,6 +95,8 @@ async function createEntries(files) {
     const isCodeFile = ['py', 'sql'].includes(extension.toLowerCase());
     const htmlRelativePath = relativePath.slice(0, -extension.length) + 'html';
     const hasExistingHtmlPage = fileSet.has(htmlRelativePath);
+    const hasNotebookPreview = fileSet.has(`${relativePath.slice(0, -extension.length)}ipynb`) ||
+      (extension.toLowerCase() === 'ipynb' && hasExistingHtmlPage);
 
     if (isCodeFile) {
       const source = await readFile(path.join(sourceRoot, relativePath), 'utf8');
@@ -118,6 +120,7 @@ async function createEntries(files) {
       title: displayTitle(fileName),
       slug: slugify(`${baseName}-${extension}`),
       live: `/homework/${webPath}`,
+      ...(hasNotebookPreview ? { showLive: false } : {}),
       github: `https://github.com/ankitkumartiwari-web/homework-tka/blob/main/docs/homework/${sourceWebPath}`,
     });
   }
@@ -146,6 +149,7 @@ function render(entries) {
         date: entry.date.iso,
         description: `Homework file ${entry.title} for ${entry.date.label}.`,
         live: entry.live,
+        ...(entry.showLive === false ? { showLive: false } : {}),
         github: entry.github,
       })),
     })),
