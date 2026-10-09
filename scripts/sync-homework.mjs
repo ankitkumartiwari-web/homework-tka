@@ -103,7 +103,9 @@ async function createEntries(files) {
       if (hasExistingHtmlPage) continue;
     }
 
-    if (isCodeFile || extension.toLowerCase() !== 'html') continue;
+    const isDirectHomeworkFile = ['ipynb'].includes(extension.toLowerCase());
+
+    if (isCodeFile || (!isDirectHomeworkFile && extension.toLowerCase() !== 'html')) continue;
 
     const sourceFile = ['py', 'sql']
       .map((sourceExtension) => `${relativePath.slice(0, -extension.length)}${sourceExtension}`)

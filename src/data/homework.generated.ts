@@ -138,6 +138,21 @@ export const generatedHomework: Subject[] = [
     "subject": "python",
     "days": [
       {
+        "day": "10-oct-2026",
+        "label": "10 Oct 2026",
+        "homeworks": [
+          {
+            "id": 1000,
+            "title": "Task1",
+            "slug": "task1-ipynb",
+            "date": "2026-10-10",
+            "description": "Homework file Task1 for 10 Oct 2026.",
+            "live": "/homework/python/10-oct-2026/task1.ipynb",
+            "github": "https://github.com/ankitkumartiwari-web/homework-tka/blob/main/docs/homework/python/10-oct-2026/task1.ipynb"
+          }
+        ]
+      },
+      {
         "day": "6-oct-2026",
         "label": "6 Oct 2026",
         "homeworks": [
