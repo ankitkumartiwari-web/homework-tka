@@ -154,6 +154,22 @@ export const generatedHomework: Subject[] = [
         ]
       },
       {
+        "day": "12-oct-2026",
+        "label": "12 Oct 2026",
+        "homeworks": [
+          {
+            "id": 1000,
+            "title": "Oct12hw",
+            "slug": "oct12hw-ipynb",
+            "date": "2026-10-12",
+            "description": "Homework file Oct12hw for 12 Oct 2026.",
+            "live": "/homework/python/12-oct-2026/oct12hw.ipynb",
+            "showLive": false,
+            "github": "https://github.com/ankitkumartiwari-web/homework-tka/blob/main/docs/homework/python/12-oct-2026/oct12hw.ipynb"
+          }
+        ]
+      },
+      {
         "day": "6-oct-2026",
         "label": "6 Oct 2026",
         "homeworks": [
