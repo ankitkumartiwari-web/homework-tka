@@ -170,6 +170,38 @@ export const generatedHomework: Subject[] = [
         ]
       },
       {
+        "day": "20-oct-2026",
+        "label": "20 Oct 2026",
+        "homeworks": [
+          {
+            "id": 1000,
+            "title": "Oct20",
+            "slug": "oct20-ipynb",
+            "date": "2026-10-20",
+            "description": "Homework file Oct20 for 20 Oct 2026.",
+            "live": "/homework/python/20-oct-2026/oct20.ipynb",
+            "showLive": false,
+            "github": "https://github.com/ankitkumartiwari-web/homework-tka/blob/main/docs/homework/python/20-oct-2026/oct20.ipynb"
+          }
+        ]
+      },
+      {
+        "day": "27-oct-2026",
+        "label": "27 Oct 2026",
+        "homeworks": [
+          {
+            "id": 1000,
+            "title": "Operator Overloading",
+            "slug": "operator-overloading-ipynb",
+            "date": "2026-10-27",
+            "description": "Homework file Operator Overloading for 27 Oct 2026.",
+            "live": "/homework/python/27-oct-2026/operator_overloading.ipynb",
+            "showLive": false,
+            "github": "https://github.com/ankitkumartiwari-web/homework-tka/blob/main/docs/homework/python/27-oct-2026/operator_overloading.ipynb"
+          }
+        ]
+      },
+      {
         "day": "6-oct-2026",
         "label": "6 Oct 2026",
         "homeworks": [
