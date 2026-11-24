@@ -1,0 +1,116 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Oct12hw</title>
+    <style>
+      :root { color-scheme: dark; }
+      * { box-sizing: border-box; }
+      body { margin: 0; padding: 32px 16px; background: #0f172a; color: #e2e8f0; font-family: Inter, system-ui, sans-serif; }
+      main { max-width: 960px; margin: 0 auto; }
+      h1 { margin: 0 0 24px; font-size: 28px; }
+      .cell { margin: 16px 0; overflow: hidden; border: 1px solid #334155; border-radius: 8px; background: #111827; }
+      .label { padding: 8px 12px; color: #94a3b8; border-bottom: 1px solid #334155; font-size: 12px; font-weight: 700; text-transform: uppercase; }
+      pre { margin: 0; padding: 16px; overflow-x: auto; font-family: Consolas, Monaco, monospace; line-height: 1.6; white-space: pre-wrap; }
+      .output { color: #bbf7d0; background: #0b1220; }
+      .markdown { margin: 16px 0; padding: 16px; white-space: pre-wrap; border-left: 3px solid #38bdf8; }
+    </style>
+  </head>
+  <body>
+    <main>
+      <h1>Oct12hw</h1>
+      <section class="markdown">Convert a given list into flatten list</section>
+<section class="cell">
+      <div class="label">Code</div>
+      <pre class="code">input_list = [1, [2, 3], [4, [5 , 6]], 7]
+
+def flatten_list(nested_list):
+    flat_list = [] # create an empty list to store the flattened elements
+    for item in nested_list: # iterate through each item in the nested list
+        if isinstance(item, list): # check if the item is a list
+            flat_list.extend(flatten_list(item)) # recursively call the function on the sublist and extend the flat list with the result
+        else:
+            flat_list.append(item) # if the item is not a list, append it to the flat list
+    return flat_list 
+
+print(flatten_list(input_list))</pre>
+      <div class="label">Output</div><pre class="output">[1, 2, 3, 4, 5, 6, 7]
+</pre>
+    </section>
+<section class="cell">
+      <div class="label">Code</div>
+      <pre class="code">input_list = [1, [2, 3], [4, [5 , 6]], 7]
+
+def ouput_list(lst):
+    output_lst = [] # create an empty list to store the output
+
+    for i in lst: # iterate through each element in the input list
+        if type(i) == list: # check if the element is a list
+            output_lst.extend(ouput_list(i)) # recursively call the function on the sublist and extend the output list with the result
+        else:
+            output_lst.append(i) # if the element is not a list, append it to the output list
+
+    return output_lst
+
+print(ouput_list(input_list))</pre>
+      <div class="label">Output</div><pre class="output">[1, 2, 3, 4, 5, 6, 7]
+</pre>
+    </section>
+<section class="markdown">#Homework</section>
+<section class="cell">
+      <div class="label">Code</div>
+      <pre class="code">student_marks_db = {
+    1: [78, 88, 69],
+    2: [67, 89, 91],
+    3: [77, 81, 92]
+}
+</pre>
+      
+    </section>
+<section class="markdown">WAP to for average marks of each student and print the student id and average marks in a dictionary format</section>
+<section class="cell">
+      <div class="label">Code</div>
+      <pre class="code">for student_id, marks in student_marks_db.items():
+    average_marks = sum(marks) / len(marks)
+    print(f&quot;Student ID: {student_id}, Average Marks: {average_marks:.2f}&quot;)</pre>
+      <div class="label">Output</div><pre class="output">Student ID: 1, Average Marks: 78.33
+Student ID: 2, Average Marks: 82.33
+Student ID: 3, Average Marks: 83.33
+</pre>
+    </section>
+<section class="markdown">WAP to display topper roll_no and congratulate them</section>
+<section class="cell">
+      <div class="label">Code</div>
+      <pre class="code">lst = []
+
+for student_id, marks in student_marks_db.items():
+    lst.append(sum(marks))
+topper = max(lst)
+print(f&quot;Congratualtions Roll Number {student_id} on scoring {topper} marks&quot;)
+    </pre>
+      <div class="label">Output</div><pre class="output">Congratualtions Roll Number 3 on scoring 250 marks
+</pre>
+    </section>
+<section class="markdown">WAP to display subject wise topper</section>
+<section class="cell">
+      <div class="label">Code</div>
+      <pre class="code">subjects = [&quot;Physics&quot;, &quot;Chemistry&quot;, &quot;Maths&quot;]
+
+for subject in range(len(subjects)):
+    highest = 0
+
+    for student_id, marks in student_marks_db.items():
+        if marks[subject] &gt; highest:
+            highest = marks[subject]
+            topper = student_id
+
+    print(f&quot;{subjects[subject]} Topper Marks: {highest}, Topper is Roll No: {topper}&quot;)</pre>
+      <div class="label">Output</div><pre class="output">Physics Topper Marks: 78, Topper is Roll No: 1
+Chemistry Topper Marks: 89, Topper is Roll No: 2
+Maths Topper Marks: 92, Topper is Roll No: 3
+</pre>
+    </section>
+    </main>
+  </body>
+</html>

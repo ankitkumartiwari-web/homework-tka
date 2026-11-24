@@ -1,0 +1,53 @@
+1.
+class Ankit:
+
+    name
+    age
+    college
+    skill
+
+    def study()
+    def code()
+
+
+2.
+class bulb:
+
+    color
+    price
+    power
+    
+   def turnOn()
+   def turnoff()
+
+3.
+class keyboard:
+
+    mechanical
+    color
+    price
+    layout
+
+    def type()
+    def press_key()
+
+4. 
+class UNO :
+
+    color
+    number
+    symbol
+    player
+
+    def draw_card()
+    def play_card()
+
+5.
+class maggie :
+
+    flavor
+    price
+    weight
+
+    def cook()
+    def eat()
