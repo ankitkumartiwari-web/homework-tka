@@ -147,8 +147,7 @@ export const generatedHomework: Subject[] = [
             "slug": "task1-ipynb",
             "date": "2026-10-10",
             "description": "Homework file Task1 for 10 Oct 2026.",
-            "live": "/homework/python/10-oct-2026/task1.ipynb",
-            "showLive": false,
+            "live": "/homework/python/10-oct-2026/task1.html",
             "github": "https://github.com/ankitkumartiwari-web/homework-tka/blob/main/docs/homework/python/10-oct-2026/task1.ipynb"
           }
         ]
@@ -163,8 +162,7 @@ export const generatedHomework: Subject[] = [
             "slug": "oct12hw-ipynb",
             "date": "2026-10-12",
             "description": "Homework file Oct12hw for 12 Oct 2026.",
-            "live": "/homework/python/12-oct-2026/oct12hw.ipynb",
-            "showLive": false,
+            "live": "/homework/python/12-oct-2026/oct12hw.html",
             "github": "https://github.com/ankitkumartiwari-web/homework-tka/blob/main/docs/homework/python/12-oct-2026/oct12hw.ipynb"
           }
         ]
@@ -179,8 +177,7 @@ export const generatedHomework: Subject[] = [
             "slug": "oct20-ipynb",
             "date": "2026-10-20",
             "description": "Homework file Oct20 for 20 Oct 2026.",
-            "live": "/homework/python/20-oct-2026/oct20.ipynb",
-            "showLive": false,
+            "live": "/homework/python/20-oct-2026/oct20.html",
             "github": "https://github.com/ankitkumartiwari-web/homework-tka/blob/main/docs/homework/python/20-oct-2026/oct20.ipynb"
           }
         ]
@@ -195,8 +192,7 @@ export const generatedHomework: Subject[] = [
             "slug": "operator-overloading-ipynb",
             "date": "2026-10-27",
             "description": "Homework file Operator Overloading for 27 Oct 2026.",
-            "live": "/homework/python/27-oct-2026/operator_overloading.ipynb",
-            "showLive": false,
+            "live": "/homework/python/27-oct-2026/operator_overloading.html",
             "github": "https://github.com/ankitkumartiwari-web/homework-tka/blob/main/docs/homework/python/27-oct-2026/operator_overloading.ipynb"
           }
         ]

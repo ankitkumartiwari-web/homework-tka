@@ -24,6 +24,11 @@ function displayTitle(fileName) {
     .replace(/\b\w/g, (character) => character.toUpperCase());
 }
 
+function webRelativeHtmlPath(relativePath) {
+  const extension = path.extname(relativePath);
+  return (relativePath.slice(0, -extension.length) + '.html').split(path.sep).join('/');
+}
+
 function escapeHtml(value) {
   return value
     .replaceAll('&', '&amp;')
@@ -47,6 +52,60 @@ function createCodePage(title, source) {
   </head>
   <body>
     <pre>${escapeHtml(source)}</pre>
+  </body>
+</html>
+`;
+}
+
+function createNotebookPage(title, notebook) {
+  const cells = notebook.cells ?? [];
+  const cellHtml = cells.map((cell) => {
+    const source = Array.isArray(cell.source) ? cell.source.join('') : (cell.source ?? '');
+    const sourceHtml = escapeHtml(source);
+
+    if (cell.cell_type === 'markdown') {
+      return `<section class="markdown">${sourceHtml}</section>`;
+    }
+
+    const outputs = (cell.outputs ?? []).map((output) => {
+      if (typeof output.text === 'string') return escapeHtml(output.text);
+      if (Array.isArray(output.text)) return escapeHtml(output.text.join(''));
+      if (typeof output.data?.['text/plain'] === 'string') return escapeHtml(output.data['text/plain']);
+      if (Array.isArray(output.data?.['text/plain'])) return escapeHtml(output.data['text/plain'].join(''));
+      return '';
+    }).filter(Boolean).join('\n');
+
+    return `<section class="cell">
+      <div class="label">Code</div>
+      <pre class="code">${sourceHtml}</pre>
+      ${outputs ? `<div class="label">Output</div><pre class="output">${outputs}</pre>` : ''}
+    </section>`;
+  }).join('\n');
+
+  return `<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>${escapeHtml(title)}</title>
+    <style>
+      :root { color-scheme: dark; }
+      * { box-sizing: border-box; }
+      body { margin: 0; padding: 32px 16px; background: #0f172a; color: #e2e8f0; font-family: Inter, system-ui, sans-serif; }
+      main { max-width: 960px; margin: 0 auto; }
+      h1 { margin: 0 0 24px; font-size: 28px; }
+      .cell { margin: 16px 0; overflow: hidden; border: 1px solid #334155; border-radius: 8px; background: #111827; }
+      .label { padding: 8px 12px; color: #94a3b8; border-bottom: 1px solid #334155; font-size: 12px; font-weight: 700; text-transform: uppercase; }
+      pre { margin: 0; padding: 16px; overflow-x: auto; font-family: Consolas, Monaco, monospace; line-height: 1.6; white-space: pre-wrap; }
+      .output { color: #bbf7d0; background: #0b1220; }
+      .markdown { margin: 16px 0; padding: 16px; white-space: pre-wrap; border-left: 3px solid #38bdf8; }
+    </style>
+  </head>
+  <body>
+    <main>
+      <h1>${escapeHtml(title)}</h1>
+      ${cellHtml}
+    </main>
   </body>
 </html>
 `;
@@ -104,6 +163,13 @@ async function createEntries(files) {
       if (hasExistingHtmlPage) continue;
     }
 
+    if (hasNotebookPreview) {
+      const source = await readFile(path.join(sourceRoot, relativePath), 'utf8');
+      const notebook = JSON.parse(source);
+      const htmlPath = path.join(publicRoot, relativePath.slice(0, -extension.length) + 'html');
+      await writeFile(htmlPath, createNotebookPage(displayTitle(fileName), notebook));
+    }
+
     const isDirectHomeworkFile = ['ipynb'].includes(extension.toLowerCase());
 
     if (isCodeFile || (!isDirectHomeworkFile && extension.toLowerCase() !== 'html')) continue;
@@ -118,8 +184,9 @@ async function createEntries(files) {
       date,
       title: displayTitle(fileName),
       slug: slugify(`${baseName}-${extension}`),
-      live: `/homework/${webPath}`,
-      ...(hasNotebookPreview ? { showLive: false } : {}),
+      live: hasNotebookPreview
+        ? `/homework/${webRelativeHtmlPath(relativePath)}`
+        : `/homework/${webPath}`,
       github: `https://github.com/ankitkumartiwari-web/homework-tka/blob/main/docs/homework/${sourceWebPath}`,
     });
   }

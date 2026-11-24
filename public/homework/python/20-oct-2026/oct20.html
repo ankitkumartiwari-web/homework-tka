@@ -1,0 +1,561 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Oct20</title>
+    <style>
+      :root { color-scheme: dark; }
+      * { box-sizing: border-box; }
+      body { margin: 0; padding: 32px 16px; background: #0f172a; color: #e2e8f0; font-family: Inter, system-ui, sans-serif; }
+      main { max-width: 960px; margin: 0 auto; }
+      h1 { margin: 0 0 24px; font-size: 28px; }
+      .cell { margin: 16px 0; overflow: hidden; border: 1px solid #334155; border-radius: 8px; background: #111827; }
+      .label { padding: 8px 12px; color: #94a3b8; border-bottom: 1px solid #334155; font-size: 12px; font-weight: 700; text-transform: uppercase; }
+      pre { margin: 0; padding: 16px; overflow-x: auto; font-family: Consolas, Monaco, monospace; line-height: 1.6; white-space: pre-wrap; }
+      .output { color: #bbf7d0; background: #0b1220; }
+      .markdown { margin: 16px 0; padding: 16px; white-space: pre-wrap; border-left: 3px solid #38bdf8; }
+    </style>
+  </head>
+  <body>
+    <main>
+      <h1>Oct20</h1>
+      <section class="cell">
+      <div class="label">Code</div>
+      <pre class="code"># Class: Ankit
+# Attributes:
+#     name
+#     age
+#     college
+#     skill
+# Methods:
+#     study()
+#     code()
+
+class Ankit:
+    def __init__(self, name, age, college, skill):
+        self.name = name
+        self.age = age
+        self.college = college
+        self.skill = skill
+
+    def study(self):
+        print(f&quot;{self.name} is studying {self.skill} in {self.college}.&quot;)
+
+    def code(self):
+        print(f&quot;{self.name} is coding in Python using {self.skill} skills.&quot;)
+
+
+# creating 5 objects of class Ankit
+s1 = Ankit(&quot;Jay Sharma&quot;, 20, &quot;MIT&quot;, &quot;Python&quot;)
+s2 = Ankit(&quot;Priya Verma&quot;, 21, &quot;IIT Delhi&quot;, &quot;Java&quot;)
+s3 = Ankit(&quot;Rahul Singh&quot;, 19, &quot;NIT Trichy&quot;, &quot;C++&quot;)
+s4 = Ankit(&quot;Sneha Patil&quot;, 22, &quot;BITS Pilani&quot;, &quot;Machine Learning&quot;)
+s5 = Ankit(&quot;Karan Mehta&quot;, 23, &quot;VIT&quot;, &quot;Web Development&quot;)
+
+students = [s1, s2, s3, s4, s5]
+
+# displaying the attributes of every object
+for i in students:
+    print(&quot;-&quot;*40)
+    print(f&quot;Name: {i.name}&quot;)
+    print(f&quot;Age: {i.age}&quot;)
+    print(f&quot;College: {i.college}&quot;)
+    print(f&quot;Skill: {i.skill}&quot;)
+
+# calling the methods on the objects
+for i in students:
+    i.study()
+
+print(&quot;=&quot;*40)
+
+for i in students:
+    i.code()</pre>
+      <div class="label">Output</div><pre class="output">----------------------------------------
+Name: Jay Sharma
+Age: 20
+College: MIT
+Skill: Python
+----------------------------------------
+Name: Priya Verma
+Age: 21
+College: IIT Delhi
+Skill: Java
+----------------------------------------
+Name: Rahul Singh
+Age: 19
+College: NIT Trichy
+Skill: C++
+----------------------------------------
+Name: Sneha Patil
+Age: 22
+College: BITS Pilani
+Skill: Machine Learning
+----------------------------------------
+Name: Karan Mehta
+Age: 23
+College: VIT
+Skill: Web Development
+Jay Sharma is studying Python in MIT.
+Priya Verma is studying Java in IIT Delhi.
+Rahul Singh is studying C++ in NIT Trichy.
+Sneha Patil is studying Machine Learning in BITS Pilani.
+Karan Mehta is studying Web Development in VIT.
+========================================
+Jay Sharma is coding in Python using Python skills.
+Priya Verma is coding in Python using Java skills.
+Rahul Singh is coding in Python using C++ skills.
+Sneha Patil is coding in Python using Machine Learning skills.
+Karan Mehta is coding in Python using Web Development skills.
+</pre>
+    </section>
+<section class="cell">
+      <div class="label">Code</div>
+      <pre class="code"># Class: Bulb
+# Attributes:
+#     color
+#     price
+#     power
+#     is_on
+# Methods:
+#     turn_on()
+#     turn_off()
+#     show_details()
+
+class Bulb:
+    def __init__(self, color, price, power):
+        self.color = color
+        self.price = price
+        self.power = power
+        self.is_on = False
+
+    def turn_on(self):
+        self.is_on = True
+        print(f&quot;The {self.color} bulb ({self.power}W) is switched ON.&quot;)
+
+    def turn_off(self):
+        self.is_on = False
+        print(f&quot;The {self.color} bulb ({self.power}W) is switched OFF.&quot;)
+
+    def show_details(self):
+        print(&quot;-&quot;*40)
+        print(f&quot;Color: {self.color}&quot;)
+        print(f&quot;Price: {self.price}&quot;)
+        print(f&quot;Power: {self.power}W&quot;)
+        print(f&quot;State: {&#39;ON&#39; if self.is_on else &#39;OFF&#39;}&quot;)
+
+
+# creating 5 objects of class Bulb
+b1 = Bulb(&quot;White&quot;, 100, 60)
+b2 = Bulb(&quot;Yellow&quot;, 80, 40)
+b3 = Bulb(&quot;Blue&quot;, 150, 9)
+b4 = Bulb(&quot;Red&quot;, 120, 100)
+b5 = Bulb(&quot;Green&quot;, 90, 15)
+
+bulbs = [b1, b2, b3, b4, b5]
+
+# displaying the attributes of every object
+for i in bulbs:
+    i.show_details()
+
+# switching on every bulb
+for i in bulbs:
+    i.turn_on()
+
+print(&quot;=&quot;*40)
+
+# switching off every bulb
+for i in bulbs:
+    i.turn_off()
+
+print(&quot;=&quot;*40)
+
+# checking the state of every bulb
+for i in bulbs:
+    i.show_details()</pre>
+      <div class="label">Output</div><pre class="output">----------------------------------------
+Color: White
+Price: 100
+Power: 60W
+State: OFF
+----------------------------------------
+Color: Yellow
+Price: 80
+Power: 40W
+State: OFF
+----------------------------------------
+Color: Blue
+Price: 150
+Power: 9W
+State: OFF
+----------------------------------------
+Color: Red
+Price: 120
+Power: 100W
+State: OFF
+----------------------------------------
+Color: Green
+Price: 90
+Power: 15W
+State: OFF
+The White bulb (60W) is switched ON.
+The Yellow bulb (40W) is switched ON.
+The Blue bulb (9W) is switched ON.
+The Red bulb (100W) is switched ON.
+The Green bulb (15W) is switched ON.
+========================================
+The White bulb (60W) is switched OFF.
+The Yellow bulb (40W) is switched OFF.
+The Blue bulb (9W) is switched OFF.
+The Red bulb (100W) is switched OFF.
+The Green bulb (15W) is switched OFF.
+========================================
+----------------------------------------
+Color: White
+Price: 100
+Power: 60W
+State: OFF
+----------------------------------------
+Color: Yellow
+Price: 80
+Power: 40W
+State: OFF
+----------------------------------------
+Color: Blue
+Price: 150
+Power: 9W
+State: OFF
+----------------------------------------
+Color: Red
+Price: 120
+Power: 100W
+State: OFF
+----------------------------------------
+Color: Green
+Price: 90
+Power: 15W
+State: OFF
+</pre>
+    </section>
+<section class="cell">
+      <div class="label">Code</div>
+      <pre class="code"># Class: Keyboard
+# Attributes:
+#     mechanical
+#     color
+#     price
+#     layout
+# Methods:
+#     type()
+#     press_key()
+#     show_details()
+
+class Keyboard:
+    def __init__(self, mechanical, color, price, layout):
+        self.mechanical = mechanical
+        self.color = color
+        self.price = price
+        self.layout = layout
+
+    def type(self, text=&quot;Hello World&quot;):
+        print(f&quot;Typing &#39;{text}&#39; on the {self.color} keyboard.&quot;)
+
+    def press_key(self, key=&quot;Enter&quot;):
+        print(f&quot;The key &#39;{key}&#39; is pressed on the {self.color} keyboard.&quot;)
+
+    def show_details(self):
+        print(&quot;-&quot;*40)
+        print(f&quot;Type: {&#39;Mechanical&#39; if self.mechanical else &#39;Membrane&#39;}&quot;)
+        print(f&quot;Color: {self.color}&quot;)
+        print(f&quot;Price: {self.price}&quot;)
+        print(f&quot;Layout: {self.layout}&quot;)
+
+
+# creating 5 objects of class Keyboard
+k1 = Keyboard(True, &quot;Black&quot;, 4500, &quot;US Full Size&quot;)
+k2 = Keyboard(False, &quot;White&quot;, 1200, &quot;Indian Compact&quot;)
+k3 = Keyboard(True, &quot;RGB Backlit&quot;, 8500, &quot;UK Full Size&quot;)
+k4 = Keyboard(False, &quot;Grey&quot;, 2000, &quot;Indian Full Size&quot;)
+k5 = Keyboard(True, &quot;Blue&quot;, 6000, &quot;US Tenkeyless&quot;)
+
+keyboards = [k1, k2, k3, k4, k5]
+
+# displaying the attributes of every object
+for i in keyboards:
+    i.show_details()
+
+# typing and pressing a key on every keyboard
+for i in keyboards:
+    i.type(&quot;Hello Python&quot;)
+    i.press_key(&quot;Enter&quot;)
+    print(&quot;-&quot;*40)
+
+# showing the details of every keyboard
+for i in keyboards:
+    i.show_details()</pre>
+      <div class="label">Output</div><pre class="output">----------------------------------------
+Type: Mechanical
+Color: Black
+Price: 4500
+Layout: US Full Size
+----------------------------------------
+Type: Membrane
+Color: White
+Price: 1200
+Layout: Indian Compact
+----------------------------------------
+Type: Mechanical
+Color: RGB Backlit
+Price: 8500
+Layout: UK Full Size
+----------------------------------------
+Type: Membrane
+Color: Grey
+Price: 2000
+Layout: Indian Full Size
+----------------------------------------
+Type: Mechanical
+Color: Blue
+Price: 6000
+Layout: US Tenkeyless
+Typing &#39;Hello Python&#39; on the Black keyboard.
+The key &#39;Enter&#39; is pressed on the Black keyboard.
+----------------------------------------
+Typing &#39;Hello Python&#39; on the White keyboard.
+The key &#39;Enter&#39; is pressed on the White keyboard.
+----------------------------------------
+Typing &#39;Hello Python&#39; on the RGB Backlit keyboard.
+The key &#39;Enter&#39; is pressed on the RGB Backlit keyboard.
+----------------------------------------
+Typing &#39;Hello Python&#39; on the Grey keyboard.
+The key &#39;Enter&#39; is pressed on the Grey keyboard.
+----------------------------------------
+Typing &#39;Hello Python&#39; on the Blue keyboard.
+The key &#39;Enter&#39; is pressed on the Blue keyboard.
+----------------------------------------
+----------------------------------------
+Type: Mechanical
+Color: Black
+Price: 4500
+Layout: US Full Size
+----------------------------------------
+Type: Membrane
+Color: White
+Price: 1200
+Layout: Indian Compact
+----------------------------------------
+Type: Mechanical
+Color: RGB Backlit
+Price: 8500
+Layout: UK Full Size
+----------------------------------------
+Type: Membrane
+Color: Grey
+Price: 2000
+Layout: Indian Full Size
+----------------------------------------
+Type: Mechanical
+Color: Blue
+Price: 6000
+Layout: US Tenkeyless
+</pre>
+    </section>
+<section class="cell">
+      <div class="label">Code</div>
+      <pre class="code"># Class: UNO
+# Attributes:
+#     color
+#     number
+#     symbol
+#     player
+# Methods:
+#     draw_card()
+#     play_card()
+#     show_details()
+
+class UNO:
+    def __init__(self, color, number, symbol, player):
+        self.color = color
+        self.number = number
+        self.symbol = symbol
+        self.player = player
+
+    def draw_card(self):
+        print(f&quot;{self.player} draws the {self.color} card from the deck.&quot;)
+
+    def play_card(self):
+        card = self.number if self.number != &quot;None&quot; else self.symbol
+        print(f&quot;{self.player} plays the {self.color} {card} card on the pile.&quot;)
+
+    def show_details(self):
+        print(&quot;-&quot;*40)
+        print(f&quot;Color: {self.color}&quot;)
+        print(f&quot;Number: {self.number}&quot;)
+        print(f&quot;Symbol: {self.symbol}&quot;)
+        print(f&quot;Player: {self.player}&quot;)
+
+
+# creating 5 objects of class UNO
+c1 = UNO(&quot;Red&quot;, &quot;7&quot;, &quot;None&quot;, &quot;Aarav&quot;)
+c2 = UNO(&quot;Blue&quot;, &quot;5&quot;, &quot;None&quot;, &quot;Priya&quot;)
+c3 = UNO(&quot;Green&quot;, &quot;0&quot;, &quot;None&quot;, &quot;Rahul&quot;)
+c4 = UNO(&quot;Yellow&quot;, &quot;None&quot;, &quot;Skip&quot;, &quot;Sneha&quot;)
+c5 = UNO(&quot;Black&quot;, &quot;None&quot;, &quot;Wild&quot;, &quot;Karan&quot;)
+
+cards = [c1, c2, c3, c4, c5]
+
+# displaying the attributes of every object
+for i in cards:
+    i.show_details()
+
+# every player draws a card
+for i in cards:
+    i.draw_card()
+
+print(&quot;=&quot;*40)
+
+# every player plays a card
+for i in cards:
+    i.play_card()</pre>
+      <div class="label">Output</div><pre class="output">----------------------------------------
+Color: Red
+Number: 7
+Symbol: None
+Player: Aarav
+----------------------------------------
+Color: Blue
+Number: 5
+Symbol: None
+Player: Priya
+----------------------------------------
+Color: Green
+Number: 0
+Symbol: None
+Player: Rahul
+----------------------------------------
+Color: Yellow
+Number: None
+Symbol: Skip
+Player: Sneha
+----------------------------------------
+Color: Black
+Number: None
+Symbol: Wild
+Player: Karan
+Aarav draws the Red card from the deck.
+Priya draws the Blue card from the deck.
+Rahul draws the Green card from the deck.
+Sneha draws the Yellow card from the deck.
+Karan draws the Black card from the deck.
+========================================
+Aarav plays the Red 7 card on the pile.
+Priya plays the Blue 5 card on the pile.
+Rahul plays the Green 0 card on the pile.
+Sneha plays the Yellow Skip card on the pile.
+Karan plays the Black Wild card on the pile.
+</pre>
+    </section>
+<section class="cell">
+      <div class="label">Code</div>
+      <pre class="code"># Class: Maggie
+# Attributes:
+#     flavor
+#     price
+#     weight
+# Methods:
+#     cook()
+#     eat()
+#     show_details()
+
+class Maggie:
+    def __init__(self, flavor, price, weight):
+        self.flavor = flavor
+        self.price = price
+        self.weight = weight
+
+    def cook(self):
+        print(f&quot;Cooking the {self.flavor} Maggi ({self.weight}g pack) for 2 minutes.&quot;)
+
+    def eat(self):
+        print(f&quot;Yum! The {self.flavor} Maggi is eaten.&quot;)
+
+    def show_details(self):
+        print(&quot;-&quot;*40)
+        print(f&quot;Flavor: {self.flavor}&quot;)
+        print(f&quot;Price: {self.price}&quot;)
+        print(f&quot;Weight: {self.weight}g&quot;)
+
+
+# creating 5 objects of class Maggie
+m1 = Maggie(&quot;Masala&quot;, 12, 70)
+m2 = Maggie(&quot;Hot and Sour&quot;, 14, 75)
+m3 = Maggie(&quot;Tomato&quot;, 13, 80)
+m4 = Maggie(&quot;Chicken&quot;, 15, 99)
+m5 = Maggie(&quot;Peri Peri&quot;, 16, 105)
+
+maggies = [m1, m2, m3, m4, m5]
+
+# displaying the attributes of every object
+for i in maggies:
+    i.show_details()
+
+# cooking every pack
+for i in maggies:
+    i.cook()
+
+print(&quot;=&quot;*40)
+
+# eating every pack
+for i in maggies:
+    i.eat()</pre>
+      <div class="label">Output</div><pre class="output">----------------------------------------
+Flavor: Masala
+Price: 12
+Weight: 70g
+----------------------------------------
+Flavor: Hot and Sour
+Price: 14
+Weight: 75g
+----------------------------------------
+Flavor: Tomato
+Price: 13
+Weight: 80g
+----------------------------------------
+Flavor: Chicken
+Price: 15
+Weight: 99g
+----------------------------------------
+Flavor: Peri Peri
+Price: 16
+Weight: 105g
+Cooking the Masala Maggi (70g pack) for 2 minutes.
+Cooking the Hot and Sour Maggi (75g pack) for 2 minutes.
+Cooking the Tomato Maggi (80g pack) for 2 minutes.
+Cooking the Chicken Maggi (99g pack) for 2 minutes.
+Cooking the Peri Peri Maggi (105g pack) for 2 minutes.
+========================================
+Yum! The Masala Maggi is eaten.
+Yum! The Hot and Sour Maggi is eaten.
+Yum! The Tomato Maggi is eaten.
+Yum! The Chicken Maggi is eaten.
+Yum! The Peri Peri Maggi is eaten.
+</pre>
+    </section>
+<section class="cell">
+      <div class="label">Code</div>
+      <pre class="code"># checking the number of objects of every class
+print(&quot;Students:&quot;, len(students))
+print(&quot;Bulbs:&quot;, len(bulbs))
+print(&quot;Keyboards:&quot;, len(keyboards))
+print(&quot;Cards:&quot;, len(cards))
+print(&quot;Maggies:&quot;, len(maggies))</pre>
+      <div class="label">Output</div><pre class="output">Students: 5
+Bulbs: 5
+Keyboards: 5
+Cards: 5
+Maggies: 5
+</pre>
+    </section>
+    </main>
+  </body>
+</html>

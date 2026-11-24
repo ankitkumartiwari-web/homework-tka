@@ -1,0 +1,375 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Task1</title>
+    <style>
+      :root { color-scheme: dark; }
+      * { box-sizing: border-box; }
+      body { margin: 0; padding: 32px 16px; background: #0f172a; color: #e2e8f0; font-family: Inter, system-ui, sans-serif; }
+      main { max-width: 960px; margin: 0 auto; }
+      h1 { margin: 0 0 24px; font-size: 28px; }
+      .cell { margin: 16px 0; overflow: hidden; border: 1px solid #334155; border-radius: 8px; background: #111827; }
+      .label { padding: 8px 12px; color: #94a3b8; border-bottom: 1px solid #334155; font-size: 12px; font-weight: 700; text-transform: uppercase; }
+      pre { margin: 0; padding: 16px; overflow-x: auto; font-family: Consolas, Monaco, monospace; line-height: 1.6; white-space: pre-wrap; }
+      .output { color: #bbf7d0; background: #0b1220; }
+      .markdown { margin: 16px 0; padding: 16px; white-space: pre-wrap; border-left: 3px solid #38bdf8; }
+    </style>
+  </head>
+  <body>
+    <main>
+      <h1>Task1</h1>
+      <section class="markdown">Task 1:
+Scenario: A training institute wants to store basic student information. 
+Your Task: 
+• Create a class Student with attributes name, roll_no and course. 
+• Create a method display_student() that prints all student details. 
+• Create at least two Student objects with different values. 
+• Call display_student() for both objects. 
+self.name 
+Expected Output (example): 
+Name: Rahul 
+Roll No: 101 
+Course: Python Full Stack
+Bonus Challenge: Add an email attribute and display it. </section>
+<section class="cell">
+      <div class="label">Code</div>
+      <pre class="code">class Student:
+    def __init__(self, name, roll_no, course, email):
+        self.name = name
+        self.roll_no = roll_no
+        self.course = course
+        self.email = email
+    def display_student(self):
+        print(&quot;-&quot;*40)
+        print(f&quot;Name: {self.name}&quot;)
+        print(f&quot;Roll No: {self.roll_no}&quot;)
+        print(f&quot;Course: {self.course}&quot;)
+        print(f&quot;Email: {self.email}&quot;)
+        print(&quot;-&quot;*40)
+
+student1 = Student(&quot;Rahul&quot;, &quot;101&quot;, &quot;Python Full Stack&quot;, &quot;rahul@example.com&quot;)
+student2 = Student(&quot;Anjali&quot;, &quot;102&quot;, &quot;Data Science&quot;, &quot;anjali@example.com&quot;)
+student1.display_student()
+student2.display_student()</pre>
+      <div class="label">Output</div><pre class="output">----------------------------------------
+Name: Rahul
+Roll No: 101
+Course: Python Full Stack
+Email: rahul@example.com
+----------------------------------------
+----------------------------------------
+Name: Anjali
+Roll No: 102
+Course: Data Science
+Email: anjali@example.com
+----------------------------------------
+</pre>
+    </section>
+<section class="markdown">Task 2:
+Scenario: The company wants employee details to be initialized automatically whenever an employee object is created. 
+Your Task: 
+• Create an Employee class with a constructor accepting employee_id, name, department and salary. 
+• Store these values using self. 
+• Create a method display_details(). 
+• Create at least three Employee objects. 
+• Display the details of all employees. 
+Expected Output (example): 
+Employee ID: E101 | Name: Amit | Department: IT | Salary: 55000 </section>
+<section class="cell">
+      <div class="label">Code</div>
+      <pre class="code">class Employee:
+    def __init__(self, id, name, department, salary):
+        self.emp_id = id
+        self.name = name
+        self.department = department
+        self.salary = salary
+        
+    def display_details(self):
+        
+        print(&quot;-&quot;*110)
+        print(f&quot;| {&#39;Employee ID&#39;:^15}: {self.emp_id:&lt;10} | {&#39;Name&#39;:^10}: {self.name:&lt;10} | {&#39;Department&#39;:^15}: {self.department:&lt;10} | {&#39;Salary&#39;:^10}: {self.salary:&lt;10} |&quot;)
+        print(&quot;-&quot;*110)
+
+
+emp1 = Employee(&quot;E001&quot;, &quot;Rahul&quot;, &quot;IT&quot;, 60000)
+emp1.display_details()
+emp2 = Employee(&quot;E002&quot;, &quot;Anjali&quot;, &quot;HR&quot;, 55000)
+emp2.display_details()
+emp3 = Employee(&quot;E003&quot;, &quot;Rohit&quot;, &quot;Finance&quot;, 70000)
+emp3.display_details()</pre>
+      <div class="label">Output</div><pre class="output">--------------------------------------------------------------------------------------------------------------
+|   Employee ID  : E001       |    Name   : Rahul      |   Department   : IT         |   Salary  : 60000      |
+--------------------------------------------------------------------------------------------------------------
+--------------------------------------------------------------------------------------------------------------
+|   Employee ID  : E002       |    Name   : Anjali     |   Department   : HR         |   Salary  : 55000      |
+--------------------------------------------------------------------------------------------------------------
+--------------------------------------------------------------------------------------------------------------
+|   Employee ID  : E003       |    Name   : Rohit      |   Department   : Finance    |   Salary  : 70000      |
+--------------------------------------------------------------------------------------------------------------
+</pre>
+    </section>
+<section class="markdown">Task 3:
+Scenario: Build a simple bank account system. 
+Your Task: 
+• Create a BankAccount class with account_number, holder_name and balance. 
+• Initialize the values using __init__(). 
+• Create deposit(amount) to add money. 
+• Create withdraw(amount) to subtract money only when sufficient balance is available. 
+• Create check_balance() to display the current balance. 
+• Test deposit and withdrawal operations. 
+Expected Output (example): 
+Initial Balance: 10000 
+Deposited: 3000 
+Withdrawn: 2500 
+Current Balance: 10500 
+Bonus Challenge: Add a transaction_history list and store every deposit/withdrawal.</section>
+<section class="cell">
+      <div class="label">Code</div>
+      <pre class="code">class BankAccount:
+    def __init__(self, account_number, account_holder, balance):
+        self.account_number = account_number
+        self.account_holder = account_holder
+        self.balance = balance
+
+    def deposit(self, amount):
+        amount = float(amount)
+        if amount &gt; 0:
+            self.balance += amount
+            print(f&quot;Deposited: {amount} \nNew Balance: {self.balance}&quot;)
+
+    def withdraw(self, amount):
+        amount = float(amount)
+        if amount &gt; 0 and amount &lt;= self.balance:
+            self.balance -= amount
+            print(f&quot;Withdrawn: {amount} \nNew Balance: {self.balance}&quot;)
+        else:
+            print(&quot;Insufficient balance or invalid amount.&quot;)
+
+    def check_balance(self):
+        print(f&quot;Account Holder: {self.account_holder} \nAccount Number: {self.account_number} \nBalance: {self.balance}&quot;)
+
+
+catch = BankAccount(&quot;1234567890&quot;, &quot;Rahul&quot;, 10000)
+catch.deposit(3000)
+catch.withdraw(2500)
+catch.check_balance()</pre>
+      <div class="label">Output</div><pre class="output">Deposited: 3000.0 
+New Balance: 13000.0
+Withdrawn: 2500.0 
+New Balance: 10500.0
+Account Holder: Rahul 
+Account Number: 1234567890 
+Balance: 10500.0
+</pre>
+    </section>
+<section class="markdown">Task 4:
+Scenario: An organization has different types of employees. Every employee has common information, while 
+developers have additional information. 
+Your Task: 
+• Create a parent class Employee with name and salary. 
+• Add a display_info() method to Employee. 
+• Create a child class Developer that inherits Employee. 
+• Add a programming_language attribute to Developer. 
+• Create a method show_developer_info(). 
+• Create a Developer object and display all information. 
+Expected Output (example): 
+Name: Neha 
+Salary: 75000 
+Programming Language: Python
+Bonus Challenge: Add another child class Tester with a testing_tool attribute.</section>
+<section class="cell">
+      <div class="label">Code</div>
+      <pre class="code">class Employee:
+    def __init__(self, name, salary):
+        self.name = name
+        self.salary = salary
+    def display_info(self):
+        print(f&quot;Employee Name: {self.name} \nSalary: {self.salary}&quot;)
+
+class Developer(Employee):
+    def __init__(self, programming_language):
+        self.programming_language = programming_language
+    def show_developer_info(self):
+        print(f&quot;Programming Language: {self.programming_language}&quot;)
+class Tester(Employee):
+    def __init__(self, testing_tool):
+        self.testing_tool = testing_tool
+    def show_tester_info(self):
+        print(f&quot;Testing Tool: {self.testing_tool}&quot;)
+dev1 = Developer(&quot;Python&quot;)
+dev1.name = &quot;Neha&quot;
+dev1.salary = 75000
+dev1.display_info()
+dev1.show_developer_info()
+
+print(&quot;=&quot;*40)
+
+test1 = Tester(&quot;Selenium&quot;)
+test1.name = &quot;Rohit&quot;
+test1.salary = 65000
+test1.display_info()
+test1.show_tester_info()</pre>
+      <div class="label">Output</div><pre class="output">Employee Name: Neha 
+Salary: 75000
+Programming Language: Python
+========================================
+Employee Name: Rohit 
+Salary: 65000
+Testing Tool: Selenium
+</pre>
+    </section>
+<section class="markdown">Task 5:
+Scenario: A transport application supports different types of vehicles. 
+Your Task: 
+• Create a parent class Vehicle with a method start(). 
+• Create child classes Car and Bike. 
+• Override start() in both child classes. 
+• Create objects of Car and Bike and call start(). 
+• Observe how the same method name produces different behavior. 
+Expected Output (example): 
+Car is starting with a key. 
+Bike is starting with a self-start button.
+Bonus Challenge: Create a Truck class and override start().</section>
+<section class="cell">
+      <div class="label">Code</div>
+      <pre class="code">class Vehicle:
+    def start(self):
+        print(&quot;Vehicle started&quot;)
+class Car(Vehicle):
+    def start(self):
+        print(&quot;Car starting with a key&quot;)
+class Bike(Vehicle):
+    def start(self):
+        print(&quot;Bike is starting with a self-start button&quot;)
+class Truck(Vehicle): 
+    def start(self):
+        print(&quot;Truck started with a heavy engine&quot;)
+car = Car()
+car.start()
+bike = Bike()
+bike.start()
+truck = Truck()
+truck.start()
+vehicle = Vehicle()
+vehicle.start()</pre>
+      <div class="label">Output</div><pre class="output">Car starting with a key
+Bike is starting with a self-start button
+Truck started with a heavy engine
+Vehicle started
+</pre>
+    </section>
+<section class="markdown">Task 6:
+Scenario: Build a small employee management system using OOP concepts. 
+Your Task: 
+• Create a parent class Employee with employee_id, name and salary. 
+• Create Developer(Employee) with programming_language. 
+• Create Tester(Employee) with testing_tool. 
+• Use constructors in all classes. 
+• Implement display_info() in the parent class. 
+• Override display_info() in Developer and Tester to include role-specific information. 
+• Create at least two developers and two testers. 
+• Store all objects in a list and iterate through the list to display their details. 
+Expected Output (example): 
+The output should clearly identify each employee&#39;s ID, name, salary and role-specific 
+information. 
+Bonus Challenge: Add Manager(Employee) with a team_size attribute. Add a method to calculate annual salary.</section>
+<section class="cell">
+      <div class="label">Code</div>
+      <pre class="code">class Employee:
+    def __init__(self, employee_id, name, salary):
+        self.employee_id = employee_id
+        self.name = name
+        self.salary = salary
+
+    def calculate_annual_salary(self):
+        return self.salary * 12
+
+    def get_role(self):
+        return &quot;Employee&quot;
+
+    def get_role_details(self):
+        return &quot;-&quot;
+
+    def display_info(self):
+        print(
+            f&quot;| {self.employee_id:&lt;11} &quot;
+            f&quot;| {self.name:&lt;12} &quot;
+            f&quot;| {self.salary:&lt;10.2f} &quot;
+            f&quot;| {self.calculate_annual_salary():&lt;13.2f} &quot;
+            f&quot;| {self.get_role():&lt;10} &quot;
+            f&quot;| {self.get_role_details():&lt;20} |&quot;
+        )
+
+
+class Developer(Employee):
+    def __init__(self, employee_id, name, salary, programming_language):
+        super().__init__(employee_id, name, salary)
+        self.programming_language = programming_language
+
+    def get_role(self):
+        return &quot;Developer&quot;
+
+    def get_role_details(self):
+        return self.programming_language
+
+
+class Tester(Employee):
+    def __init__(self, employee_id, name, salary, testing_tool):
+        super().__init__(employee_id, name, salary)
+        self.testing_tool = testing_tool
+
+    def get_role(self):
+        return &quot;Tester&quot;
+
+    def get_role_details(self):
+        return self.testing_tool
+
+
+class Manager(Employee):
+    def __init__(self, employee_id, name, salary, team_size):
+        super().__init__(employee_id, name, salary)
+        self.team_size = team_size
+
+    def get_role(self):
+        return &quot;Manager&quot;
+
+    def get_role_details(self):
+        return f&quot;Team size: {self.team_size}&quot;
+
+
+employees = [
+    Developer(101, &quot;Rahul&quot;, 50000, &quot;Python&quot;),
+    Developer(102, &quot;Priya&quot;, 60000, &quot;Java&quot;),
+    Tester(103, &quot;Amit&quot;, 40000, &quot;Selenium&quot;),
+    Tester(104, &quot;Neha&quot;, 45000, &quot;Postman&quot;),
+    Manager(105, &quot;Raj&quot;, 80000, 8)
+]
+
+print(&quot;-&quot; * 95)
+print(
+    f&quot;| {&#39;ID&#39;:&lt;11} | {&#39;Name&#39;:&lt;12} | {&#39;Salary&#39;:&lt;10} &quot;
+    f&quot;| {&#39;Annual Salary&#39;:&lt;13} | {&#39;Role&#39;:&lt;10} | {&#39;Role Details&#39;:&lt;20} |&quot;
+)
+print(&quot;-&quot; * 95)
+
+for emp in employees:
+    emp.display_info()
+
+print(&quot;-&quot; * 95)
+</pre>
+      <div class="label">Output</div><pre class="output">-----------------------------------------------------------------------------------------------
+| ID          | Name         | Salary     | Annual Salary | Role       | Role Details         |
+-----------------------------------------------------------------------------------------------
+| 101         | Rahul        | 50000.00   | 600000.00     | Developer  | Python               |
+| 102         | Priya        | 60000.00   | 720000.00     | Developer  | Java                 |
+| 103         | Amit         | 40000.00   | 480000.00     | Tester     | Selenium             |
+| 104         | Neha         | 45000.00   | 540000.00     | Tester     | Postman              |
+| 105         | Raj          | 80000.00   | 960000.00     | Manager    | Team size: 8         |
+-----------------------------------------------------------------------------------------------
+</pre>
+    </section>
+    </main>
+  </body>
+</html>

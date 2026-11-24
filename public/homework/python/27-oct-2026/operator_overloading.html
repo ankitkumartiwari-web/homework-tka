@@ -1,0 +1,69 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Operator Overloading</title>
+    <style>
+      :root { color-scheme: dark; }
+      * { box-sizing: border-box; }
+      body { margin: 0; padding: 32px 16px; background: #0f172a; color: #e2e8f0; font-family: Inter, system-ui, sans-serif; }
+      main { max-width: 960px; margin: 0 auto; }
+      h1 { margin: 0 0 24px; font-size: 28px; }
+      .cell { margin: 16px 0; overflow: hidden; border: 1px solid #334155; border-radius: 8px; background: #111827; }
+      .label { padding: 8px 12px; color: #94a3b8; border-bottom: 1px solid #334155; font-size: 12px; font-weight: 700; text-transform: uppercase; }
+      pre { margin: 0; padding: 16px; overflow-x: auto; font-family: Consolas, Monaco, monospace; line-height: 1.6; white-space: pre-wrap; }
+      .output { color: #bbf7d0; background: #0b1220; }
+      .markdown { margin: 16px 0; padding: 16px; white-space: pre-wrap; border-left: 3px solid #38bdf8; }
+    </style>
+  </head>
+  <body>
+    <main>
+      <h1>Operator Overloading</h1>
+      <section class="cell">
+      <div class="label">Code</div>
+      <pre class="code">class Book:
+    def __init__(self, price, name):
+        self.p = price
+        self.n = name
+
+    def __add__(self, other):
+        return f&quot;Addition of price is {self.p + other.p} and concatenation of name is {self.n + other.n}&quot;
+
+    def __sub__(self, other):
+        return f&quot;Subtraction of price is {self.p - other.p} and strings do not support subtraction&quot;
+
+    def __mul__(self, other):
+        return f&quot;Multiplication of prices is {self.p * other.p} and strings can be multiplied by integers, not by other strings&quot;
+
+    def __truediv__(self, other):
+        return f&quot;Division of prices is {self.p / other.p} and strings do not support division&quot;
+
+    def __mod__(self, other):
+        return f&quot;Modulus of prices is {self.p % other.p} and strings do not support modulus&quot;
+
+    def __eq__(self, other):
+        return f&quot;Are prices same? {self.p == other.p}. Are the names equal? {self.n == other.n}&quot;
+
+
+catch1 = Book(5, &quot;Book1&quot;)
+catch2 = Book(2, &quot;Book2&quot;)
+
+print(catch1 + catch2)
+print(catch1 - catch2)
+print(catch1 * catch2)
+print(catch1 / catch2)
+print(catch1 % catch2)
+print(catch1 == catch2)
+</pre>
+      <div class="label">Output</div><pre class="output">Addition of price is 7 and concatenation of name is Book1Book2
+Subtraction of price is 3 and strings do not support subtraction
+Multiplication of prices is 10 and strings can be multiplied by integers, not by other strings
+Division of prices is 2.5 and strings do not support division
+Modulus of prices is 1 and strings do not support modulus
+Are prices same? False. Are the names equal? False
+</pre>
+    </section>
+    </main>
+  </body>
+</html>
