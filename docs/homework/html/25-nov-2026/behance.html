@@ -1,0 +1,1213 @@
+<!DOCTYPE html><html class="h-full bg-background" lang="en"><head>
+<meta charset="utf-8">
+<meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover" name="viewport">
+<meta content="mobile_tab" name="shell-type">
+<title>PawPal - Pet Care &amp; Health Passbook</title>
+<link href="https://fonts.googleapis.com" rel="preconnect">
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect">
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&amp;display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet">
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script id="tailwind-config">
+  tailwind.config = {
+    darkMode: "class",
+    theme: {
+      extend: {
+        colors: {
+          "outline-variant": "#dbc2b0",
+          "surface-container": "#f9ebe7",
+          "secondary-container": "#b3f0d0",
+          "outline": "#887364",
+          "primary-fixed": "#ffdcc3",
+          "error": "#ba1a1a",
+          "on-tertiary": "#ffffff",
+          "inverse-surface": "#362f2d",
+          "tertiary-fixed": "#d8e2ff",
+          "on-error-container": "#93000a",
+          "background": "#fff8f6",
+          "on-primary-container": "#fffbff",
+          "secondary": "#306950",
+          "on-secondary": "#ffffff",
+          "surface-container-low": "#fff1ed",
+          "tertiary-container": "#2170e4",
+          "surface-container-highest": "#ede0dc",
+          "primary": "#8d4b00",
+          "on-tertiary-fixed": "#001a42",
+          "surface-dim": "#e4d7d4",
+          "surface-variant": "#ede0dc",
+          "primary-fixed-dim": "#ffb77d",
+          "surface-bright": "#fff8f6",
+          "tertiary": "#0058be",
+          "on-surface": "#211a18",
+          "inverse-on-surface": "#fceeea",
+          "secondary-fixed": "#b3f0d0",
+          "secondary-fixed-dim": "#98d3b4",
+          "primary-container": "#b15f00",
+          "on-tertiary-fixed-variant": "#004395",
+          "on-primary-fixed": "#2f1500",
+          "on-background": "#211a18",
+          "tertiary-fixed-dim": "#adc6ff",
+          "inverse-primary": "#ffb77d",
+          "surface-container-lowest": "#ffffff",
+          "on-secondary-fixed": "#002114",
+          "on-primary-fixed-variant": "#6e3900",
+          "on-secondary-container": "#145039",
+          "on-tertiary-container": "#fefcff",
+          "error-container": "#ffdad6",
+          "on-primary": "#ffffff",
+          "on-error": "#ffffff",
+          "on-surface-variant": "#554336",
+          "surface": "#fff8f6",
+          "surface-tint": "#904d00",
+          "on-secondary-fixed-variant": "#145039",
+          "surface-container-high": "#f3e5e2"
+        },
+        borderRadius: {
+          "DEFAULT": "1rem",
+          "lg": "2rem",
+          "xl": "3rem",
+          "full": "9999px"
+        },
+        fontFamily: {
+          "sans": ["'Plus Jakarta Sans'", "sans-serif"],
+          "headline": ["'Plus Jakarta Sans'", "sans-serif"],
+          "title": ["'Plus Jakarta Sans'", "sans-serif"],
+          "body": ["'Plus Jakarta Sans'", "sans-serif"],
+          "label": ["'Plus Jakarta Sans'", "sans-serif"]
+        },
+        boxShadow: {
+          "m3-elevation-1": "0 1px 3px 1px rgba(0, 0, 0, 0.08), 0 1px 2px 0 rgba(0, 0, 0, 0.05)",
+          "m3-elevation-2": "0 2px 8px 2px rgba(44, 37, 35, 0.1), 0 1px 3px 0 rgba(44, 37, 35, 0.06)",
+          "m3-elevation-3": "0 8px 24px rgba(44, 37, 35, 0.14), 0 2px 6px rgba(44, 37, 35, 0.08)",
+          "m3-card": "0 1px 3px rgba(44, 37, 35, 0.06), 0 2px 8px rgba(44, 37, 35, 0.04)"
+        }
+      }
+    }
+  };
+</script>
+<style>
+@layer base {
+  html, body {
+    margin: 0;
+    padding: 0;
+    font-family: 'Plus Jakarta Sans', sans-serif;
+  }
+}
+::-webkit-scrollbar {
+  display: none;
+}
+.active-icon-fill {
+  font-variation-settings: 'FILL' 1, 'wght' 600, 'GRAD' 0, 'opsz' 24;
+}
+/* Material 3 State Layer simulation */
+.m3-state-layer {
+  position: relative;
+  overflow: hidden;
+}
+.m3-state-layer::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background-color: currentColor;
+  opacity: 0;
+  transition: opacity 0.2s cubic-bezier(0.2, 0, 1, 1);
+  pointer-events: none;
+  border-radius: inherit;
+}
+.m3-state-layer:active::after {
+  opacity: 0.16;
+}
+/* Tab Transition Animations */
+.view-panel {
+  display: none;
+  opacity: 0;
+  transform: translateY(6px);
+  transition: opacity 0.2s ease-out, transform 0.2s ease-out;
+}
+.view-panel.active-view {
+  display: flex;
+  opacity: 1;
+  transform: translateY(0);
+}
+/* Bones Dropping Keyframes with Continuous Looping support */
+@keyframes boneDrop1 {
+  0% { transform: translateY(-160px) rotate(-45deg) scale(0.6); opacity: 0; }
+  35% { opacity: 1; }
+  70% { transform: translateY(18px) rotate(12deg) scale(1.15, 0.85); }
+  85% { transform: translateY(-10px) rotate(-8deg) scale(0.95, 1.05); }
+  92%, 100% { transform: translateY(0) rotate(5deg) scale(1, 1); opacity: 1; }
+}
+@keyframes boneDrop2 {
+  0% { transform: translateY(-200px) rotate(30deg) scale(0.6); opacity: 0; }
+  40% { opacity: 1; }
+  72% { transform: translateY(16px) rotate(-15deg) scale(1.2, 0.8); }
+  86% { transform: translateY(-8px) rotate(10deg) scale(0.95, 1.05); }
+  94%, 100% { transform: translateY(0) rotate(-10deg) scale(1, 1); opacity: 1; }
+}
+@keyframes boneDrop3 {
+  0% { transform: translateY(-220px) rotate(-80deg) scale(0.6); opacity: 0; }
+  45% { opacity: 1; }
+  75% { transform: translateY(20px) rotate(22deg) scale(1.25, 0.75); }
+  88% { transform: translateY(-6px) rotate(-5deg) scale(0.96, 1.04); }
+  96%, 100% { transform: translateY(0) rotate(18deg) scale(1, 1); opacity: 1; }
+}
+@keyframes bowlBounce {
+  0%, 35% { transform: scale(1); }
+  68% { transform: scale(1.09, 0.91); }
+  84% { transform: scale(0.96, 1.04); }
+  100% { transform: scale(1); }
+}
+@keyframes starSparkle {
+  0%, 100% { transform: scale(0) rotate(0deg); opacity: 0; }
+  50% { transform: scale(1.2) rotate(180deg); opacity: 1; }
+}
+.bone-fall-1 { animation: boneDrop1 1.8s cubic-bezier(0.34, 1.56, 0.64, 1) infinite; }
+.bone-fall-2 { animation: boneDrop2 1.8s 0.22s cubic-bezier(0.34, 1.56, 0.64, 1) infinite; }
+.bone-fall-3 { animation: boneDrop3 1.8s 0.4s cubic-bezier(0.34, 1.56, 0.64, 1) infinite; }
+.bowl-react { animation: bowlBounce 1.8s cubic-bezier(0.34, 1.56, 0.64, 1) infinite; }
+.star-spark-1 { animation: starSparkle 1.4s 0.5s infinite ease-in-out; }
+.star-spark-2 { animation: starSparkle 1.3s 0.7s infinite ease-in-out; }
+/* Modals & Bottom Sheets Transition */
+.m3-modal-backdrop {
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.25s ease-out;
+}
+.m3-modal-backdrop.open {
+  opacity: 1;
+  pointer-events: auto;
+}
+.m3-sheet-content {
+  transform: translateY(100%);
+  transition: transform 0.3s cubic-bezier(0.2, 0, 0, 1);
+}
+.m3-modal-backdrop.open .m3-sheet-content {
+  transform: translateY(0);
+}
+</style>
+</head>
+<body class="min-h-screen flex items-center justify-center p-0 sm:p-4 select-none relative bg-background">
+<!-- ================================================= -->
+<!-- SLEEK SMARTPHONE DEVICE CONTAINER (CENTERED 412PX) -->
+<!-- ================================================= -->
+<div class="fixed inset-0 pointer-events-none select-none overflow-hidden z-0 opacity-80"><span class="material-symbols-outlined text-[150px] absolute -top-8 -left-8 text-primary rotate-12" style="font-variation-settings: &quot;FILL&quot; 1;" data-stitch-orig-opacity="0.08">pets</span><span class="material-symbols-outlined text-[160px] absolute top-1/4 -right-12 text-primary -rotate-25" style="font-variation-settings: &quot;FILL&quot; 1;" data-stitch-orig-opacity="0.08">pets</span><span class="material-symbols-outlined text-[130px] absolute bottom-12 -left-10 text-primary rotate-45" style="font-variation-settings: &quot;FILL&quot; 1;" data-stitch-orig-opacity="0.08">pets</span><span class="material-symbols-outlined text-[140px] absolute -bottom-8 -right-8 text-primary -rotate-12" style="font-variation-settings: &quot;FILL&quot; 1;" data-stitch-orig-opacity="0.08">pets</span><div class="absolute inset-0 flex items-center justify-center pointer-events-none select-none z-0"><h1 class="text-[150px] sm:text-[160px] font-headline font-extrabold tracking-widest text-primary-fixed-dim/50 uppercase select-none drop-shadow-sm rotate-[-8deg]">PawPal</h1></div><div class="absolute inset-0 flex items-center justify-center pointer-events-none select-none z-0"><h1 class="font-headline text-[150px] sm:text-[160px] font-extrabold text-primary-fixed/40 tracking-widest uppercase opacity-80 drop-shadow-md select-none rotate-[-8deg]">PawPal</h1></div></div><div class="relative w-full max-w-[412px] h-[100dvh] sm:h-[860px] sm:max-h-[92vh] bg-surface sm:rounded-[44px] shadow-2xl ring-1 ring-white/10 sm:ring-8 sm:ring-slate-800 flex flex-col justify-between overflow-hidden border border-outline-variant/30" id="phone-chassis">
+<!-- Inner Display Frame -->
+<div class="relative w-full h-full bg-surface overflow-hidden flex flex-col select-none" id="phone-screen">
+<!-- ========================================== -->
+<!-- BONES DROPPING LOADING ANIMATION OVERLAY   -->
+<!-- ========================================== -->
+<div class="absolute inset-0 z-[100] bg-surface flex flex-col items-center justify-center p-6 select-none transition-opacity duration-300 hidden" id="loading-overlay" style="opacity: 0;">
+<!-- Background decorative paw spots -->
+<div class="absolute inset-0 pointer-events-none opacity-20 flex justify-between p-8">
+<span class="material-symbols-outlined text-[72px] text-primary rotate-12">pets</span>
+<span class="material-symbols-outlined text-[80px] text-secondary -rotate-12 self-end">pets</span>
+</div>
+<div class="relative w-72 h-72 flex flex-col items-center justify-end pb-8">
+<!-- Sparkles -->
+<span class="material-symbols-outlined text-primary text-[28px] absolute top-12 left-10 star-spark-1" style="font-variation-settings: 'FILL' 1;">star</span>
+
+<!-- Dropping Cartoon Bone 1 -->
+<div class="bone-fall-1 absolute top-16 left-16 text-primary-container drop-shadow-md">
+<svg fill="currentColor" height="26" viewBox="0 0 64 36" width="44">
+<path d="M12 8C12 3.58 8.42 0 4 0S-4 3.58 -4 8s3.58 8 8 8c0.4 0 0.79-0.03 1.18-0.09L24 16v4L9.18 20.09C8.79 20.03 8.4 20 8 20c-4.42 0-8 3.58-8 8s3.58 8 8 8 8-3.58 8-8c0-1.42-0.38-2.75-1.03-3.91L52 24.1c-0.65 1.16-1.03 2.49-1.03 3.9 0 4.42 3.58 8 8 8s8-3.58 8-8-3.58-8-8-8c-0.4 0-0.79 0.03-1.18 0.09L40 20v-4l14.82-0.09c0.39 0.06 0.78 0.09 1.18 0.09 4.42 0 8-3.58 8-8s-3.58-8-8-8-8 3.58-8 8c0 1.42 0.38 2.75 1.03 3.91L13.03 11.9C13.68 10.74 14.06 9.41 14.06 8z" transform="translate(6, 0)"></path>
+</svg>
+</div>
+<!-- Dropping Cartoon Bone 2 -->
+<div class="bone-fall-2 absolute top-12 right-16 text-primary drop-shadow-md">
+<svg fill="currentColor" height="28" viewBox="0 0 64 36" width="48">
+<path d="M12 8C12 3.58 8.42 0 4 0S-4 3.58 -4 8s3.58 8 8 8c0.4 0 0.79-0.03 1.18-0.09L24 16v4L9.18 20.09C8.79 20.03 8.4 20 8 20c-4.42 0-8 3.58-8 8s3.58 8 8 8 8-3.58 8-8c0-1.42-0.38-2.75-1.03-3.91L52 24.1c-0.65 1.16-1.03 2.49-1.03 3.9 0 4.42 3.58 8 8 8s8-3.58 8-8-3.58-8-8-8c-0.4 0-0.79 0.03-1.18 0.09L40 20v-4l14.82-0.09c0.39 0.06 0.78 0.09 1.18 0.09 4.42 0 8-3.58 8-8s-3.58-8-8-8-8 3.58-8 8c0 1.42 0.38 2.75 1.03 3.91L13.03 11.9C13.68 10.74 14.06 9.41 14.06 8z" transform="translate(6, 0)"></path>
+</svg>
+</div>
+<!-- Dropping Cartoon Bone 3 -->
+<div class="bone-fall-3 absolute top-6 left-28 text-primary-fixed-dim drop-shadow-md">
+<svg fill="currentColor" height="25" viewBox="0 0 64 36" width="42">
+<path d="M12 8C12 3.58 8.42 0 4 0S-4 3.58 -4 8s3.58 8 8 8c0.4 0 0.79-0.03 1.18-0.09L24 16v4L9.18 20.09C8.79 20.03 8.4 20 8 20c-4.42 0-8 3.58-8 8s3.58 8 8 8 8-3.58 8-8c0-1.42-0.38-2.75-1.03-3.91L52 24.1c-0.65 1.16-1.03 2.49-1.03 3.9 0 4.42 3.58 8 8 8s8-3.58 8-8-3.58-8-8-8c-0.4 0-0.79 0.03-1.18 0.09L40 20v-4l14.82-0.09c0.39 0.06 0.78 0.09 1.18 0.09 4.42 0 8-3.58 8-8s-3.58-8-8-8-8 3.58-8 8c0 1.42 0.38 2.75 1.03 3.91L13.03 11.9C13.68 10.74 14.06 9.41 14.06 8z" transform="translate(6, 0)"></path>
+</svg>
+</div>
+<!-- Cute Amber / Dog Treat Bowl -->
+<div class="bowl-react relative w-44 h-24 bg-gradient-to-b from-primary-fixed to-primary-container rounded-b-[48px] rounded-t-[12px] shadow-m3-elevation-3 border-2 border-primary/20 flex items-center justify-center">
+<div class="absolute -top-2 inset-x-2 h-4 rounded-full bg-primary-fixed-dim border border-primary/30"></div>
+<div class="w-10 h-10 rounded-full bg-surface-container-lowest/90 shadow-xs flex items-center justify-center text-primary mt-2">
+<span class="material-symbols-outlined text-[24px]" style="font-variation-settings: 'FILL' 1;">pets</span>
+</div>
+</div>
+</div>
+<div class="flex flex-col items-center gap-2 max-w-xs text-center z-10">
+<h2 class="font-headline text-[20px] font-bold text-on-surface flex items-center gap-1.5" id="loading-heading">Checking Bruno's Health... <span class="inline-flex tracking-widest text-primary animate-pulse">...</span></h2>
+<p class="font-body text-[13px] text-on-surface-variant font-medium leading-relaxed" id="loading-subheading">
+          Tip: Regular grooming keeps Bruno's coat healthy, shiny, and skin infection-free.
+        </p>
+<!-- Smooth progress bar -->
+<div class="w-48 h-2 rounded-full bg-surface-container-highest overflow-hidden mt-2 shadow-inner">
+<div class="h-full bg-primary rounded-full transition-all duration-700 ease-out" id="loading-bar-fill" style="width: 100%;"></div>
+</div>
+
+</div>
+</div>
+<!-- ========================================== -->
+<!-- ANDROID NATIVE STATUS BAR & TOP APP BAR    -->
+<!-- ========================================== -->
+<header class="absolute top-0 inset-x-0 z-30 bg-surface/95 backdrop-blur-md">
+<!-- Android Native Status Bar with centered punch-hole camera -->
+<div class="relative h-8 px-5 flex items-center justify-between text-on-surface select-none pt-1">
+<span class="font-label text-[13px] font-semibold tracking-tight">9:41</span>
+<!-- Front Camera Punch-hole -->
+<div class="absolute left-1/2 -translate-x-1/2 top-2 w-3.5 h-3.5 bg-black rounded-full ring-2 ring-black/40"></div>
+<div class="flex items-center gap-1.5 text-on-surface">
+<span class="material-symbols-outlined text-[16px]">signal_cellular_4_bar</span>
+<span class="material-symbols-outlined text-[16px]">wifi</span>
+<span class="material-symbols-outlined text-[18px]">battery_full</span>
+</div>
+</div>
+<!-- Material Design 3 Top App Bar -->
+<div class="h-16 px-4 flex items-center justify-between gap-3 border-b border-surface-container-high/60">
+<div class="flex items-center gap-3 min-w-0">
+<div class="w-10 h-10 rounded-full bg-primary-fixed flex items-center justify-center text-primary shrink-0 shadow-xs m3-state-layer active:scale-95 transition-transform cursor-pointer" onclick="replayBonesLoading('Checking Bruno\'s Health...')" title="Tap to test loading animation">
+<span class="material-symbols-outlined text-[22px]" style="font-variation-settings: 'FILL' 1;">pets</span>
+</div>
+<div class="flex flex-col min-w-0">
+<div class="flex items-center gap-1.5">
+<span class="text-primary font-title text-[15px] leading-tight font-bold tracking-tight">PawPal</span>
+<span class="text-outline-variant text-[10px] leading-none">•</span>
+<span class="text-on-surface-variant font-label text-[12px] leading-tight font-medium tracking-wide" id="top-bar-subheading">Bruno's Passbook</span>
+</div>
+<button class="flex items-center gap-1 text-on-surface font-title text-[14px] leading-tight font-semibold text-left truncate active:opacity-75 transition-opacity" onclick="showToast('Location: Indiranagar, Bengaluru')" type="button">
+<span class="truncate max-w-[150px]">Indiranagar, Bengaluru</span>
+<span class="material-symbols-outlined text-[18px] text-primary shrink-0">arrow_drop_down</span>
+</button>
+</div>
+</div>
+<div class="flex items-center gap-2 shrink-0">
+<!-- Notifications Button (Opens M3 Bottom Sheet) -->
+<button aria-label="Notifications" class="relative w-9 h-9 rounded-full flex items-center justify-center text-on-surface-variant hover:text-on-surface hover:bg-surface-container-high active:scale-95 transition-all duration-200" id="notif-btn" onclick="openNotificationsModal()" type="button">
+<span class="material-symbols-outlined text-[21px]">notifications</span>
+<span class="absolute top-2 right-2 w-2 h-2 rounded-full bg-primary ring-2 ring-surface" id="notif-badge"></span>
+</button>
+</div>
+</div>
+</header>
+<!-- ========================================== -->
+<!-- SCROLLABLE SCREEN CONTENT AREA             -->
+<!-- ========================================== -->
+<main class="flex-1 w-full pt-24 pb-24 overflow-y-auto overflow-x-hidden relative scroll-smooth bg-surface" id="app-scroll-container">
+<!-- Background paw watermarks with visible delicate styling -->
+<div class="absolute inset-0 pointer-events-none select-none overflow-hidden z-0 opacity-15">
+<span class="material-symbols-outlined text-[150px] absolute -top-6 -right-6 text-primary rotate-12" style="font-variation-settings: 'FILL' 1;">pets</span>
+<span class="material-symbols-outlined text-[140px] absolute top-1/4 -left-12 text-primary -rotate-45" style="font-variation-settings: 'FILL' 1;">pets</span>
+<span class="material-symbols-outlined text-[130px] absolute top-2/3 -right-8 text-primary rotate-25" style="font-variation-settings: 'FILL' 1;">pets</span>
+<span class="material-symbols-outlined text-[120px] absolute bottom-12 -left-6 text-primary rotate-12" style="font-variation-settings: 'FILL' 1;">pets</span>
+</div>
+<!-- ========================================== -->
+<!-- TAB 1: HOME VIEW                          -->
+<!-- ========================================== -->
+<section class="view-panel flex-col w-full px-4 gap-4 relative z-10" id="view-home">
+<!-- Top Greeting Banner -->
+<div class="flex items-center justify-between gap-3 pt-1">
+<div class="flex flex-col min-w-0">
+<div class="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full bg-secondary-container text-on-secondary-container w-fit mb-1 shadow-xs">
+<span class="material-symbols-outlined text-[15px] leading-none" style="font-variation-settings: 'FILL' 1;">sentiment_very_satisfied</span>
+<span class="font-label text-[12px] font-semibold tracking-wide">Happy Paws Morning</span>
+</div>
+<h1 class="font-headline text-[24px] leading-[30px] text-on-surface font-extrabold tracking-tight">Good morning, Ankit!</h1>
+</div>
+<!-- Pet Badge Indicator -->
+<button class="shrink-0 flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-surface-container-high hover:bg-surface-container-highest text-on-surface font-label text-[13px] font-semibold border border-outline-variant/50 transition-all active:scale-[0.97]" onclick="navigateToTab('profile')" type="button">
+<span class="material-symbols-outlined text-[17px] text-primary" style="font-variation-settings: 'FILL' 1;">pets</span>
+<span>Bruno</span>
+</button>
+</div>
+<!-- Search Bar -->
+<div class="relative">
+<div class="h-14 flex items-center gap-3 px-4 bg-surface-container-high rounded-full shadow-m3-elevation-1 border border-outline-variant/30 hover:shadow-m3-elevation-2 transition-all duration-200 focus-within:ring-2 focus-within:ring-primary/40 focus-within:bg-surface-container-lowest">
+<span class="material-symbols-outlined text-on-surface-variant text-[22px] shrink-0">search</span>
+<input class="w-full bg-transparent border-0 outline-none font-body text-[14px] text-on-surface placeholder:text-on-surface-variant/70 leading-relaxed" id="home-search-input" oninput="filterHomeCards(this.value)" placeholder="Search groomers, walkers, vets..." type="text">
+<button aria-label="Filter" class="w-8 h-8 rounded-full bg-primary-container text-on-primary flex items-center justify-center shrink-0 active:scale-95 transition-transform duration-200" onclick="quickFilterExplore('Grooming')" type="button">
+<span class="material-symbols-outlined text-[18px]">tune</span>
+</button>
+</div>
+</div>
+<!-- Bruno's Quick-Stat Card (with retriever photo) -->
+<div class="w-full bg-surface-container-low rounded-2xl p-4 shadow-m3-card border border-outline-variant/40 relative overflow-hidden transition-all duration-200 hover:shadow-m3-elevation-1 cursor-pointer" id="bruno-hero-card" onclick="navigateToTab('profile')">
+<div class="flex gap-4 items-start relative z-10">
+<div class="relative shrink-0">
+<div class="w-24 h-24 rounded-2xl overflow-hidden shadow-xs bg-surface-container-highest border border-outline-variant/30">
+<img alt="Bruno the Golden Retriever" class="w-full h-full object-cover transition-transform duration-300 hover:scale-105" src="https://lh3.googleusercontent.com/aida/ALJJyrBzYRQFrdkoEVH1IDr3FRFoCP5Ik_pCqEAvXrJZJTc7By9Jwsmy_A_nkvkMPwf3HGHZt-aIWRfKXu09VhpnXyER3jWhPc96VjwEXmcy42OjeGdQ8q3CGSDtf0ENbL2bVrVApdGwdP3gQMH7PKzMOAWF67E8JmvqtImswERfLCHsiO1AH2DlDFFcPaqSEiMTbskOknG3T6uXrxGdgfZJXw-dutY5c5hYDD7aPjsAsHMWfg">
+</div>
+<span class="absolute -bottom-1 -right-1 bg-secondary text-on-secondary w-6 h-6 rounded-full flex items-center justify-center shadow-sm ring-2 ring-surface-container-low">
+<span class="material-symbols-outlined text-[13px]" style="font-variation-settings: 'FILL' 1;">favorite</span>
+</span>
+</div>
+<div class="flex flex-col min-w-0 flex-1">
+<div class="flex items-baseline justify-between gap-1">
+<div class="flex items-center gap-1.5 min-w-0">
+<h2 class="font-headline text-[20px] leading-[26px] text-on-surface font-bold truncate">Bruno</h2>
+<span class="material-symbols-outlined text-primary text-[18px]" style="font-variation-settings: 'FILL' 1;">verified</span>
+</div>
+<span class="font-label text-[11px] font-semibold px-2.5 py-0.5 rounded-full bg-primary-fixed text-on-primary-fixed shrink-0">28.2 kg</span>
+</div>
+<p class="font-body text-[13px] text-on-surface-variant mt-0.5 leading-normal">Golden Retriever • 2 yrs 4 mos</p>
+<div class="flex flex-wrap gap-1.5 mt-2.5">
+<span class="inline-flex items-center gap-1 px-2.5 py-1 rounded-full bg-surface-container-lowest text-secondary font-label text-[11px] font-semibold shadow-xs border border-outline-variant/30">
+<span class="material-symbols-outlined text-[13px]" style="font-variation-settings: 'FILL' 1;">check_circle</span>
+                  Vaccinated
+                </span>
+<span class="inline-flex items-center gap-1 px-2.5 py-1 rounded-full bg-secondary-container text-on-secondary-container font-label text-[11px] font-semibold">
+<span class="material-symbols-outlined text-[13px]">bolt</span>
+                  Active &amp; Happy
+                </span>
+</div>
+</div>
+</div>
+</div>
+<!-- Rabies Booster Reminder Pill with "Book Slot" -->
+<div class="w-full bg-primary-fixed rounded-2xl p-3.5 shadow-sm border border-primary-fixed-dim/50 relative overflow-hidden flex items-center justify-between gap-3 transition-transform duration-200">
+<div class="flex items-center gap-3 min-w-0">
+<div class="w-11 h-11 rounded-full bg-primary text-on-primary flex items-center justify-center shrink-0 shadow-xs">
+<span class="material-symbols-outlined text-[22px]">vaccines</span>
+</div>
+<div class="flex flex-col min-w-0">
+<div class="flex items-center gap-1.5">
+<span class="font-title text-[15px] leading-snug text-on-primary-fixed font-bold truncate">Rabies Booster</span>
+<span class="inline-flex items-center px-1.5 py-0.5 rounded-full bg-error-container text-on-error-container font-label text-[10px] font-bold uppercase tracking-wider">Due</span>
+</div>
+<p class="font-body text-[12px] leading-tight text-on-primary-fixed-variant truncate mt-0.5">Scheduled in 12 days for Bruno</p>
+</div>
+</div>
+<button class="shrink-0 px-4 py-2 rounded-full bg-primary text-on-primary font-label text-[13px] font-semibold shadow-xs active:scale-[0.96] transition-all duration-200 hover:shadow-m3-elevation-1 m3-state-layer" onclick="openBookingModal('Rabies Vaccine Booster', 'PetCare Vet Clinic', '₹450')" type="button">
+            Book Slot
+          </button>
+</div>
+<!-- Care & Services Grid -->
+<div class="flex flex-col gap-2.5">
+<div class="flex items-center justify-between px-0.5">
+<h2 class="font-title text-[18px] leading-[24px] text-on-surface font-bold tracking-tight">Care &amp; Services</h2>
+<button class="font-label text-[13px] text-primary font-semibold hover:underline flex items-center gap-0.5" onclick="navigateToTab('explore')" type="button">See all</button>
+</div>
+<div class="grid grid-cols-3 gap-2.5" id="home-services-grid">
+<!-- 1: Grooming -->
+<button class="service-chip flex flex-col items-center text-center p-3 rounded-2xl bg-surface-container-low border border-outline-variant/30 hover:border-primary/40 active:scale-95 transition-all" data-title="Grooming" onclick="quickFilterExplore('Grooming')">
+<div class="w-11 h-11 rounded-xl bg-primary-fixed text-primary flex items-center justify-center mb-1.5 shadow-xs">
+<span class="material-symbols-outlined text-[22px]">content_cut</span>
+</div>
+<span class="font-title text-[13px] font-bold text-on-surface leading-tight">Grooming</span>
+<span class="text-[10px] text-on-surface-variant font-medium mt-0.5">Bath &amp; Spa</span>
+</button>
+<!-- 2: Dog Walking -->
+<button class="service-chip flex flex-col items-center text-center p-3 rounded-2xl bg-surface-container-low border border-outline-variant/30 hover:border-secondary/40 active:scale-95 transition-all" data-title="Dog Walking" onclick="quickFilterExplore('Walking')">
+<div class="w-11 h-11 rounded-xl bg-secondary-fixed text-secondary flex items-center justify-center mb-1.5 shadow-xs">
+<span class="material-symbols-outlined text-[22px]">directions_walk</span>
+</div>
+<span class="font-title text-[13px] font-bold text-on-surface leading-tight">Dog Walking</span>
+<span class="text-[10px] text-on-surface-variant font-medium mt-0.5">Live GPS</span>
+</button>
+<!-- 3: Pet Boarding -->
+<button class="service-chip flex flex-col items-center text-center p-3 rounded-2xl bg-surface-container-low border border-outline-variant/30 hover:border-primary/40 active:scale-95 transition-all" data-title="Boarding" onclick="quickFilterExplore('Boarding')">
+<div class="w-11 h-11 rounded-xl bg-surface-container-highest text-on-surface-variant flex items-center justify-center mb-1.5 shadow-xs">
+<span class="material-symbols-outlined text-[22px]">cottage</span>
+</div>
+<span class="font-title text-[13px] font-bold text-on-surface leading-tight">Boarding</span>
+<span class="text-[10px] text-on-surface-variant font-medium mt-0.5">Cozy stays</span>
+</button>
+<!-- 4: Pet Sitting -->
+<button class="service-chip flex flex-col items-center text-center p-3 rounded-2xl bg-surface-container-low border border-outline-variant/30 hover:border-secondary/40 active:scale-95 transition-all" data-title="Pet Sitting" onclick="quickFilterExplore('Sitting')">
+<div class="w-11 h-11 rounded-xl bg-secondary-container text-on-secondary-container flex items-center justify-center mb-1.5 shadow-xs">
+<span class="material-symbols-outlined text-[22px]">volunteer_activism</span>
+</div>
+<span class="font-title text-[13px] font-bold text-on-surface leading-tight">Pet Sitting</span>
+<span class="text-[10px] text-on-surface-variant font-medium mt-0.5">At Home</span>
+</button>
+<!-- 5: Vet Consult -->
+<button class="service-chip flex flex-col items-center text-center p-3 rounded-2xl bg-surface-container-low border border-outline-variant/30 hover:border-tertiary/40 active:scale-95 transition-all" data-title="Vet Consult" onclick="quickFilterExplore('Vet')">
+<div class="w-11 h-11 rounded-xl bg-tertiary-fixed text-tertiary flex items-center justify-center mb-1.5 shadow-xs">
+<span class="material-symbols-outlined text-[22px]">medical_services</span>
+</div>
+<span class="font-title text-[13px] font-bold text-on-surface leading-tight">Vet Consult</span>
+<span class="text-[10px] text-on-surface-variant font-medium mt-0.5">24/7 Care</span>
+</button>
+<!-- 6: Training -->
+<button class="service-chip flex flex-col items-center text-center p-3 rounded-2xl bg-surface-container-low border border-outline-variant/30 hover:border-primary/40 active:scale-95 transition-all" data-title="Training" onclick="quickFilterExplore('Training')">
+<div class="w-11 h-11 rounded-xl bg-primary-fixed-dim/50 text-primary flex items-center justify-center mb-1.5 shadow-xs">
+<span class="material-symbols-outlined text-[22px]">sports_score</span>
+</div>
+<span class="font-title text-[13px] font-bold text-on-surface leading-tight">Training</span>
+<span class="text-[10px] text-on-surface-variant font-medium mt-0.5">Pawsitive</span>
+</button>
+</div>
+</div>
+<!-- Upcoming Appointment Summary Card -->
+<div class="flex flex-col gap-2" id="home-upcoming-section">
+<div class="flex items-center justify-between px-0.5">
+<h2 class="font-title text-[18px] leading-[24px] text-on-surface font-bold">Upcoming Booking</h2>
+<span class="inline-flex items-center gap-1.5 font-label text-[12px] text-primary font-semibold">
+<span class="w-2 h-2 rounded-full bg-primary animate-pulse"></span>
+              Confirmed
+            </span>
+</div>
+<div class="w-full bg-surface-container-lowest rounded-2xl p-4 shadow-m3-card border border-outline-variant/40 relative overflow-hidden transition-all duration-200">
+<div class="flex items-start justify-between gap-3 pb-3">
+<div class="flex items-center gap-3">
+<div class="w-11 h-11 rounded-xl bg-primary-fixed/70 flex items-center justify-center text-primary shrink-0 border border-primary-fixed-dim/40">
+<span class="material-symbols-outlined text-[24px]">spa</span>
+</div>
+<div>
+<h3 class="font-title text-[15px] leading-snug text-on-surface font-bold">Happy Paws Grooming</h3>
+<p class="font-body text-[12px] text-on-surface-variant mt-0.5">Full pampering session for Bruno</p>
+</div>
+</div>
+<div class="text-right shrink-0">
+<span class="px-2 py-0.5 rounded-full bg-secondary-fixed text-on-secondary-fixed font-label text-[11px] font-bold">Today</span>
+<p class="font-title text-[14px] text-on-surface font-bold mt-1">10:30 AM</p>
+</div>
+</div>
+<div class="flex items-center gap-2 pt-2 text-on-surface-variant border-t border-surface-container-high/70">
+<span class="material-symbols-outlined text-[17px] text-primary shrink-0">location_on</span>
+<span class="font-body text-[12px] truncate">100ft Road, Indiranagar, Bengaluru</span>
+</div>
+<div class="grid grid-cols-2 gap-2.5 mt-3 pt-1">
+<button class="w-full py-2.5 rounded-full bg-surface-container text-on-surface font-label text-[13px] font-semibold hover:bg-surface-container-high transition-colors active:scale-[0.98] border border-outline-variant/30" onclick="navigateToTab('bookings')" type="button">
+                View Details
+              </button>
+<button class="w-full py-2.5 rounded-full bg-secondary text-on-secondary font-label text-[13px] font-semibold shadow-xs flex items-center justify-center gap-1.5 hover:bg-secondary/95 transition-all active:scale-[0.98]" onclick="showToast('Directions opened in Maps (1.2 km away)')" type="button">
+<span class="material-symbols-outlined text-[16px]">navigation</span>
+                Directions
+              </button>
+</div>
+</div>
+</div>
+<!-- Verified Provider Card -->
+<div class="flex flex-col gap-2.5">
+<div class="flex items-center justify-between px-0.5">
+<div>
+<h2 class="font-title text-[18px] leading-[24px] text-on-surface font-bold tracking-tight">Verified Providers Nearby</h2>
+<p class="font-body text-[12px] text-on-surface-variant mt-0.5">Top-rated centers trusted by Indiranagar pet parents</p>
+</div>
+<button class="p-1 rounded-full text-primary hover:bg-primary-fixed/30 transition-colors duration-200 active:scale-95" onclick="navigateToTab('explore')" type="button">
+<span class="material-symbols-outlined text-[22px]">arrow_forward</span>
+</button>
+</div>
+<div class="w-full bg-surface-container-low rounded-2xl overflow-hidden shadow-m3-card border border-outline-variant/40 flex flex-col group transition-all duration-200 hover:shadow-m3-elevation-2">
+<div class="relative w-full h-44 bg-surface-container-highest overflow-hidden">
+<img alt="Happy Paws Salon &amp; Spa" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500 ease-out" src="https://lh3.googleusercontent.com/aida/ALJJyrBbD_FuiVrI4RidLfl8PPhexKwKQm95w-OD5g_bk9CdahE15KTXvbzsYhv_TlhCEHcAA-2fc405SkMPiDehyZOj-r2INKijjUiIEkyD87T-DWHbgnpXrCQZ_fSuC3P2A1u8NEWTvMOBuSkWDn2yckxlIPIyNTOvdCe81AOOZUBMlIunYFs6xQ03aGHALlr2EF0NpQWyLLBa65tB5ierjTk0fyv1FS2rVVU1IR9OKulwjw">
+<div class="absolute inset-0 bg-gradient-to-t from-on-background/80 via-on-background/20 to-transparent"></div>
+<div class="absolute top-3 left-3 flex items-center gap-1 px-2.5 py-1 rounded-full bg-surface-container-lowest/90 backdrop-blur-md text-on-surface font-label text-[11px] font-bold shadow-xs">
+<span class="text-primary font-bold">★ 4.9</span>
+<span class="text-on-surface-variant font-normal">(184)</span>
+</div>
+<div class="absolute top-3 right-3 flex items-center gap-1 px-2.5 py-1 rounded-full bg-secondary text-on-secondary font-label text-[11px] font-medium shadow-xs">
+<span class="material-symbols-outlined text-[13px]">verified</span>
+                Verified
+              </div>
+<div class="absolute bottom-3 left-3 right-3 flex items-end justify-between">
+<div>
+<h3 class="font-title text-[17px] font-bold text-white drop-shadow-sm leading-snug">Happy Paws Salon &amp; Spa</h3>
+<p class="font-body text-[12px] text-surface-container-lowest/90 drop-shadow-xs mt-0.5">Full Spa, De-shedding • 1.2 km away</p>
+</div>
+</div>
+</div>
+<div class="p-3.5 flex items-center justify-between gap-3 bg-surface-container-low">
+<div>
+<span class="font-label text-[10px] text-on-surface-variant uppercase tracking-wider block font-medium">Specialty Offer</span>
+<div class="flex items-baseline gap-1.5 mt-0.5">
+<span class="font-title text-[18px] text-primary font-bold">Starts at ₹599</span>
+<span class="font-body text-[12px] text-outline line-through">₹799</span>
+</div>
+</div>
+<div class="flex items-center gap-2">
+<button aria-label="Favorite" class="w-10 h-10 rounded-full bg-surface-container flex items-center justify-center text-on-surface-variant hover:text-primary transition-colors duration-200 active:scale-95 border border-outline-variant/30" onclick="toggleFavorite(this)" type="button">
+<span class="material-symbols-outlined text-[20px]">bookmark_border</span>
+</button>
+<button class="px-6 py-2.5 rounded-full bg-primary text-on-primary font-label text-[13px] font-semibold shadow-xs hover:shadow-m3-elevation-1 active:scale-[0.96] transition-all duration-200 m3-state-layer" onclick="openBookingModal('Full Spa &amp; Bath', 'Happy Paws Salon &amp; Spa', '₹599')" type="button">
+                  Book
+                </button>
+</div>
+</div>
+</div>
+</div>
+<!-- Daily Pet Wellness Tip Card -->
+<div class="w-full bg-secondary-container/40 rounded-2xl p-4 border border-secondary/30 flex items-start gap-3.5 mb-2">
+<div class="w-10 h-10 rounded-xl bg-secondary-container flex items-center justify-center text-secondary shrink-0 shadow-xs">
+<span class="material-symbols-outlined text-[22px]">lightbulb</span>
+</div>
+<div class="min-w-0 flex-1">
+<h3 class="font-title text-[14px] font-bold text-on-surface">Daily Tip: Bengaluru Heat &amp; Hydration</h3>
+<p class="font-body text-[12px] text-on-surface-variant mt-1 leading-relaxed">
+              Golden Retrievers get dehydrated quickly on afternoon walks. Carry fresh water and test asphalt temperature with your palm!
+            </p>
+</div>
+</div>
+</section>
+<!-- ========================================== -->
+<!-- TAB 2: EXPLORE VIEW                       -->
+<!-- ========================================== -->
+<section class="view-panel flex-col w-full px-4 gap-4 relative z-10" id="view-explore">
+<div class="flex flex-col gap-1 pt-1">
+<h1 class="font-headline text-[24px] font-extrabold text-on-surface">Explore Pet Care</h1>
+<p class="font-body text-[13px] text-on-surface-variant">Book verified clinics, grooming studios &amp; trainers near Indiranagar</p>
+</div>
+<!-- Search in Explore -->
+<div class="h-12 flex items-center gap-3 px-4 bg-surface-container-high rounded-full shadow-xs border border-outline-variant/30">
+<span class="material-symbols-outlined text-on-surface-variant text-[20px]">search</span>
+<input class="w-full bg-transparent border-0 outline-none font-body text-[13px] text-on-surface placeholder:text-on-surface-variant/70" id="explore-search-input" oninput="filterExploreProviders(this.value)" placeholder="Search clinics, salons, or services..." type="text">
+</div>
+<!-- Filter Chips Cluster -->
+<div class="flex items-center gap-2 overflow-x-auto pb-1 no-scrollbar">
+<button class="explore-chip px-3.5 py-1.5 rounded-full bg-primary text-on-primary font-label text-[12px] font-semibold shrink-0 shadow-xs" onclick="filterExploreTag('All', this)">All</button>
+<button class="explore-chip px-3.5 py-1.5 rounded-full bg-surface-container-high text-on-surface font-label text-[12px] font-medium shrink-0 border border-outline-variant/40 hover:bg-surface-container-highest" onclick="filterExploreTag('Grooming', this)">Grooming</button>
+<button class="explore-chip px-3.5 py-1.5 rounded-full bg-surface-container-high text-on-surface font-label text-[12px] font-medium shrink-0 border border-outline-variant/40 hover:bg-surface-container-highest" onclick="filterExploreTag('Walking', this)">Walking</button>
+<button class="explore-chip px-3.5 py-1.5 rounded-full bg-surface-container-high text-on-surface font-label text-[12px] font-medium shrink-0 border border-outline-variant/40 hover:bg-surface-container-highest" onclick="filterExploreTag('Boarding', this)">Boarding</button>
+<button class="explore-chip px-3.5 py-1.5 rounded-full bg-surface-container-high text-on-surface font-label text-[12px] font-medium shrink-0 border border-outline-variant/40 hover:bg-surface-container-highest" onclick="filterExploreTag('Vet', this)">Vet Care</button>
+<button class="explore-chip px-3.5 py-1.5 rounded-full bg-surface-container-high text-on-surface font-label text-[12px] font-medium shrink-0 border border-outline-variant/40 hover:bg-surface-container-highest" onclick="filterExploreTag('Top Rated', this)">Top Rated</button>
+</div>
+<!-- Explore Provider Cards -->
+<div class="flex flex-col gap-3.5" id="explore-provider-list">
+<!-- Provider 1 -->
+<div class="explore-card bg-surface-container-lowest rounded-2xl p-4 border border-outline-variant/40 shadow-xs flex flex-col gap-3" data-category="Grooming Near Me Top Rated Available Today" data-price="599" data-rating="4.9" data-title="Happy Paws Salon &amp; Spa">
+<div class="flex items-start justify-between">
+<div class="flex items-center gap-3">
+<div class="w-12 h-12 rounded-xl bg-primary-fixed/60 flex items-center justify-center text-primary font-bold text-[18px]">HP</div>
+<div>
+<div class="flex items-center gap-1.5">
+<h3 class="font-title text-[15px] font-bold text-on-surface">Happy Paws Salon &amp; Spa</h3>
+<span class="material-symbols-outlined text-[16px] text-secondary">verified</span>
+</div>
+<p class="font-body text-[12px] text-on-surface-variant">Grooming &amp; Spa • Indiranagar 100ft Rd (1.2 km)</p>
+</div>
+</div>
+<span class="text-primary font-label text-[12px] font-bold bg-primary-fixed/40 px-2 py-0.5 rounded-md">★ 4.9</span>
+</div>
+<div class="flex items-center justify-between border-t border-surface-container-high/60 pt-2.5">
+<div>
+<span class="font-label text-[10px] text-on-surface-variant uppercase">Pricing</span>
+<p class="font-title text-[15px] text-primary font-bold">₹599 <span class="text-[11px] font-normal text-on-surface-variant">/ session</span></p>
+</div>
+<button class="px-5 py-2 rounded-full bg-primary text-on-primary font-label text-[12px] font-semibold active:scale-95 shadow-xs" onclick="openBookingModal('Full Spa &amp; Bath', 'Happy Paws Salon &amp; Spa', '₹599')">Book Now</button>
+</div>
+</div>
+<!-- Provider 2 -->
+<div class="explore-card bg-surface-container-lowest rounded-2xl p-4 border border-outline-variant/40 shadow-xs flex flex-col gap-3" data-category="Walking Near Me Under ₹500 Available Today" data-price="350" data-rating="4.8" data-title="WalkBuddy Bengaluru">
+<div class="flex items-start justify-between">
+<div class="flex items-center gap-3">
+<div class="w-12 h-12 rounded-xl bg-secondary-fixed flex items-center justify-center text-secondary font-bold text-[18px]">WB</div>
+<div>
+<div class="flex items-center gap-1.5">
+<h3 class="font-title text-[15px] font-bold text-on-surface">WalkBuddy Bengaluru</h3>
+<span class="material-symbols-outlined text-[16px] text-secondary">verified</span>
+</div>
+<p class="font-body text-[12px] text-on-surface-variant">Dog Walking • Live GPS tracking (0.8 km)</p>
+</div>
+</div>
+<span class="text-primary font-label text-[12px] font-bold bg-primary-fixed/40 px-2 py-0.5 rounded-md">★ 4.8</span>
+</div>
+<div class="flex items-center justify-between border-t border-surface-container-high/60 pt-2.5">
+<div>
+<span class="font-label text-[10px] text-on-surface-variant uppercase">Pricing</span>
+<p class="font-title text-[15px] text-primary font-bold">₹350 <span class="text-[11px] font-normal text-on-surface-variant">/ 45 min walk</span></p>
+</div>
+<button class="px-5 py-2 rounded-full bg-primary text-on-primary font-label text-[12px] font-semibold active:scale-95 shadow-xs" onclick="openBookingModal('Evening GPS Walk', 'WalkBuddy Bengaluru', '₹350')">Book Now</button>
+</div>
+</div>
+<!-- Provider 3 -->
+<div class="explore-card bg-surface-container-lowest rounded-2xl p-4 border border-outline-variant/40 shadow-xs flex flex-col gap-3" data-category="Vet Under ₹500 Top Rated Available Today" data-price="450" data-rating="4.95" data-title="PawMed Clinic">
+<div class="flex items-start justify-between">
+<div class="flex items-center gap-3">
+<div class="w-12 h-12 rounded-xl bg-tertiary-fixed flex items-center justify-center text-tertiary font-bold text-[18px]">PM</div>
+<div>
+<div class="flex items-center gap-1.5">
+<h3 class="font-title text-[15px] font-bold text-on-surface">PawMed Clinic</h3>
+<span class="material-symbols-outlined text-[16px] text-secondary">verified</span>
+</div>
+<p class="font-body text-[12px] text-on-surface-variant">Veterinary &amp; Urgent Care • 24/7 (2.1 km)</p>
+</div>
+</div>
+<span class="text-primary font-label text-[12px] font-bold bg-primary-fixed/40 px-2 py-0.5 rounded-md">★ 4.95</span>
+</div>
+<div class="flex items-center justify-between border-t border-surface-container-high/60 pt-2.5">
+<div>
+<span class="font-label text-[10px] text-on-surface-variant uppercase">Consult Fee</span>
+<p class="font-title text-[15px] text-primary font-bold">₹450 <span class="text-[11px] font-normal text-on-surface-variant">/ visit</span></p>
+</div>
+<button class="px-5 py-2 rounded-full bg-primary text-on-primary font-label text-[12px] font-semibold active:scale-95 shadow-xs" onclick="openBookingModal('Routine Vet Health Check', 'PawMed Clinic', '₹450')">Book Now</button>
+</div>
+</div>
+</div>
+</section>
+<!-- ========================================== -->
+<!-- TAB 3: BOOKINGS MANAGEMENT                -->
+<!-- ========================================== -->
+<section class="view-panel flex-col w-full px-4 gap-4 relative z-10" id="view-bookings">
+<div class="flex items-center justify-between pt-1">
+<div>
+<h1 class="font-headline text-[24px] font-extrabold text-on-surface">My Bookings</h1>
+<p class="font-body text-[12px] text-on-surface-variant">Keep track of visits, schedules &amp; appointments</p>
+</div>
+<span class="px-3 py-1 rounded-full bg-primary-fixed text-on-primary-fixed font-label text-[11px] font-bold" id="booking-badge-counter">2 Active</span>
+</div>
+<!-- Segmented Tabs for Bookings -->
+<div class="flex bg-surface-container-high p-1 rounded-full border border-outline-variant/30">
+<button class="booking-seg-btn flex-1 py-1.5 rounded-full bg-surface-container-lowest text-on-surface font-label text-[12px] font-bold shadow-xs transition-all" onclick="switchBookingTab('upcoming', this)">
+            Upcoming (2)
+          </button>
+<button class="booking-seg-btn flex-1 py-1.5 rounded-full text-on-surface-variant font-label text-[12px] font-semibold hover:text-on-surface transition-all" onclick="switchBookingTab('completed', this)">
+            Completed (5)
+          </button>
+<button class="booking-seg-btn flex-1 py-1.5 rounded-full text-on-surface-variant font-label text-[12px] font-semibold hover:text-on-surface transition-all" onclick="switchBookingTab('cancelled', this)">
+            Cancelled (1)
+          </button>
+</div>
+<!-- Upcoming List -->
+<div class="flex flex-col gap-3" id="booking-list-upcoming">
+<!-- Card 1: Happy Paws Grooming -->
+<div class="w-full bg-surface-container-lowest rounded-2xl p-4 shadow-m3-card border border-outline-variant/40 flex flex-col gap-3">
+<div class="flex items-start justify-between">
+<div class="flex items-center gap-3">
+<div class="w-11 h-11 rounded-xl bg-primary-fixed/70 flex items-center justify-center text-primary shrink-0">
+<span class="material-symbols-outlined text-[24px]">spa</span>
+</div>
+<div>
+<h3 class="font-title text-[15px] font-bold text-on-surface">Happy Paws Grooming</h3>
+<p class="font-body text-[12px] text-on-surface-variant">Full pampering session for Bruno</p>
+</div>
+</div>
+<span class="px-2 py-0.5 rounded-full bg-secondary-fixed text-on-secondary-fixed font-label text-[11px] font-bold">Today, 10:30 AM</span>
+</div>
+<div class="flex items-center justify-between pt-2 border-t border-surface-container-high/70">
+<span class="text-[12px] font-body text-on-surface-variant">OTP: <strong class="text-on-surface font-semibold">4821</strong></span>
+<div class="flex items-center gap-2">
+<button class="px-3 py-1.5 rounded-full bg-surface-container text-on-surface font-label text-[11px] font-semibold border border-outline-variant/30 active:scale-95" onclick="showToast('Reschedule requested for Happy Paws')">Reschedule</button>
+<button class="px-3.5 py-1.5 rounded-full bg-secondary text-on-secondary font-label text-[11px] font-semibold shadow-xs active:scale-95 flex items-center gap-1" onclick="showToast('Connecting with Happy Paws Chat...')">
+<span class="material-symbols-outlined text-[14px]">chat</span>
+                  Chat
+                </button>
+</div>
+</div>
+</div>
+<!-- Card 2: WalkBuddy Evening Stroll -->
+<div class="w-full bg-surface-container-lowest rounded-2xl p-4 shadow-m3-card border border-outline-variant/40 flex flex-col gap-3">
+<div class="flex items-start justify-between">
+<div class="flex items-center gap-3">
+<div class="w-11 h-11 rounded-xl bg-secondary-fixed flex items-center justify-center text-secondary shrink-0">
+<span class="material-symbols-outlined text-[24px]">directions_walk</span>
+</div>
+<div>
+<h3 class="font-title text-[15px] font-bold text-on-surface">WalkBuddy Evening Stroll</h3>
+<p class="font-body text-[12px] text-on-surface-variant">45-min guided park walk for Bruno</p>
+</div>
+</div>
+<span class="px-2 py-0.5 rounded-full bg-primary-fixed text-on-primary-fixed font-label text-[11px] font-bold">Tomorrow, 5:30 PM</span>
+</div>
+<div class="flex items-center justify-between pt-2 border-t border-surface-container-high/70">
+<span class="text-[12px] font-body text-on-surface-variant">Walker: <strong class="text-on-surface font-semibold">Ramesh K.</strong></span>
+<div class="flex items-center gap-2">
+<button class="px-3 py-1.5 rounded-full bg-surface-container text-on-surface font-label text-[11px] font-semibold border border-outline-variant/30" onclick="showToast('Calling walker Ramesh: +91 98450 12345')">Call Walker</button>
+<button class="px-3.5 py-1.5 rounded-full bg-primary text-on-primary font-label text-[11px] font-semibold shadow-xs flex items-center gap-1" onclick="showToast('Live GPS link will activate 15m before walk.')">
+<span class="material-symbols-outlined text-[14px]">my_location</span>
+                  Live Track
+                </button>
+</div>
+</div>
+</div>
+</div>
+<!-- Completed List -->
+<div class="hidden flex-col gap-3" id="booking-list-completed">
+<div class="w-full bg-surface-container-low rounded-2xl p-4 border border-outline-variant/30 flex flex-col gap-2.5">
+<div class="flex items-start justify-between">
+<div>
+<h3 class="font-title text-[14px] font-bold text-on-surface">Routine Dental Scaling</h3>
+<p class="font-body text-[12px] text-on-surface-variant">PawMed Clinic • Dr. Ananya Rao</p>
+</div>
+<span class="px-2 py-0.5 rounded-full bg-surface-container-high text-on-surface-variant font-label text-[11px]">14 Oct 2024</span>
+</div>
+<div class="flex items-center justify-between border-t border-surface-container-high/60 pt-2">
+<span class="text-[11px] font-label text-secondary font-semibold">Completed • Invoice #8842</span>
+<button class="px-3 py-1 rounded-full bg-surface-container text-primary font-label text-[11px] font-semibold border border-outline-variant/30" onclick="openBookingModal('Dental Follow-up', 'PawMed Clinic', '₹450')">Rebook</button>
+</div>
+</div>
+</div>
+<!-- Cancelled List -->
+<div class="hidden flex-col gap-3" id="booking-list-cancelled">
+<div class="w-full bg-surface-container-low rounded-2xl p-4 border border-outline-variant/30 flex flex-col gap-2.5 opacity-80">
+<div class="flex items-start justify-between">
+<div>
+<h3 class="font-title text-[14px] font-bold text-on-surface">Pet Boarding (Weekend)</h3>
+<p class="font-body text-[12px] text-on-surface-variant">Pawsome Resort • Cancelled</p>
+</div>
+<span class="px-2 py-0.5 rounded-full bg-error-container text-on-error-container font-label text-[11px] font-semibold">Cancelled</span>
+</div>
+<p class="font-body text-[11px] text-on-surface-variant">Refund of ₹1,798 processed back to original UPI payment.</p>
+</div>
+</div>
+</section>
+<!-- ========================================== -->
+<!-- TAB 4: PROFILE & PET PASSBOOK             -->
+<!-- ========================================== -->
+<section class="view-panel flex-col w-full px-4 gap-4 relative z-10 active-view" id="view-profile">
+<div class="flex items-center justify-between pt-1">
+<div>
+<h1 class="font-headline text-[24px] font-extrabold text-on-surface">Profile &amp; Passbook</h1>
+<p class="font-body text-[12px] text-on-surface-variant">Manage your account, Bruno's vitals &amp; records</p>
+</div>
+<button class="flex items-center gap-1 px-3 py-1.5 rounded-full bg-surface-container-high text-primary font-label text-[12px] font-semibold border border-outline-variant/40 active:scale-95" onclick="showToast('Medical records PDF exported!')" type="button">
+<span class="material-symbols-outlined text-[16px]">download</span>
+<span>Export</span>
+</button>
+</div>
+<!-- User Profile Banner -->
+<div class="bg-surface-container-lowest rounded-2xl border border-outline-variant/40 shadow-xs flex items-center justify-between gap-3 p-5">
+<div class="flex items-center gap-3">
+<div class="w-14 h-14 rounded-full bg-primary-container text-on-primary font-bold text-[18px] flex items-center justify-center border-2 border-primary-fixed-dim/40 shadow-xs">
+              AK
+            </div>
+<div>
+<h2 class="font-headline text-[17px] font-bold text-on-surface">Ankit Kumar</h2>
+<p class="font-body text-[12px] text-on-surface-variant">+91 98765 43210 • ankit.k@pawpal.in</p>
+<span class="inline-flex items-center gap-1 px-2 py-0.5 rounded-full bg-secondary-container text-on-secondary-container text-[10px] font-semibold mt-1">
+<span class="material-symbols-outlined text-[12px]">loyalty</span>
+                PawPal Gold Member
+              </span>
+</div>
+</div>
+<button class="p-2 rounded-full text-on-surface-variant hover:text-on-surface active:scale-95" onclick="showToast('Editing profile settings')">
+<span class="material-symbols-outlined text-[20px]">edit</span>
+</button>
+</div>
+<!-- Bruno's Digital Passbook Details Card -->
+<div class="bg-surface-container-lowest rounded-2xl border border-outline-variant/40 shadow-xs flex flex-col gap-3 p-5">
+<div class="flex items-center justify-between">
+<span class="font-label text-[11px] font-bold text-primary uppercase tracking-wider">Bruno's Vitals &amp; Records</span>
+<span class="material-symbols-outlined text-secondary text-[20px]">verified</span>
+</div>
+<div class="flex gap-4 items-center">
+<div class="w-16 h-16 rounded-2xl overflow-hidden shrink-0 border border-outline-variant/30">
+<img alt="Bruno" class="w-full h-full object-cover" src="https://lh3.googleusercontent.com/aida/ALJJyrBzYRQFrdkoEVH1IDr3FRFoCP5Ik_pCqEAvXrJZJTc7By9Jwsmy_A_nkvkMPwf3HGHZt-aIWRfKXu09VhpnXyER3jWhPc96VjwEXmcy42OjeGdQ8q3CGSDtf0ENbL2bVrVApdGwdP3gQMH7PKzMOAWF67E8JmvqtImswERfLCHsiO1AH2DlDFFcPaqSEiMTbskOknG3T6uXrxGdgfZJXw-dutY5c5hYDD7aPjsAsHMWfg">
+</div>
+<div class="flex flex-col min-w-0 flex-1">
+<h3 class="font-headline text-[16px] font-bold text-on-surface">Bruno</h3>
+<p class="font-body text-[12px] text-on-surface-variant">Golden Retriever • Male • Microchip #9810283</p>
+<div class="flex items-center gap-2 mt-1.5">
+<span class="text-[11px] font-semibold text-on-surface bg-surface-container-high px-2 py-0.5 rounded-full">Weight: 28.2 kg</span>
+<span class="text-[11px] font-semibold text-on-surface bg-surface-container-high px-2 py-0.5 rounded-full">Age: 2y 4m</span>
+</div>
+</div>
+</div>
+<!-- Quick Vet Contacts -->
+<div class="grid grid-cols-2 gap-2 mt-1"><div class="p-3.5 px-4 rounded-xl bg-surface-container-low flex flex-col"><span class="text-[10px] font-semibold text-on-surface-variant uppercase">Primary Vet</span><span class="text-[12px] font-bold text-on-surface mt-0.5">Dr. Ananya Rao</span><span class="text-[11px] text-primary mt-0.5">PawMed Clinic</span></div><div class="p-3.5 px-4 rounded-xl bg-surface-container-low flex flex-col"><span class="text-[10px] font-semibold text-on-surface-variant uppercase">Emergency Vet</span><span class="text-[12px] font-bold text-on-surface mt-0.5">24/7 SOS Line</span><span class="text-[11px] text-error font-semibold mt-0.5">+91 80 4900 1200</span></div></div>
+</div>
+<!-- Vaccination Records -->
+<div class="bg-surface-container-lowest rounded-2xl border border-outline-variant/40 shadow-xs flex flex-col gap-2.5 p-5">
+<div class="flex items-center justify-between">
+<h3 class="font-title text-[14px] font-bold text-on-surface flex items-center gap-1.5">
+<span class="material-symbols-outlined text-primary text-[18px]">health_and_safety</span>
+              Vaccination Records
+            </h3>
+<span class="text-secondary font-label text-[11px] font-bold bg-secondary-container px-2 py-0.5 rounded-full">3 Up to Date</span>
+</div>
+<div class="flex flex-col gap-2"><div class="p-3 px-4 rounded-xl bg-surface-container-low flex items-center justify-between text-[12px]"><div class="flex flex-col"> <p class="font-bold text-on-surface">DHPP / 7-in-1 Vaccine</p> <p class="text-on-surface-variant text-[11px]">Given 15 Aug 2024 • Valid 1 yr</p></div><span class="material-symbols-outlined text-secondary text-[20px]">check_circle</span></div><div class="p-3 px-4 rounded-xl bg-primary-fixed/50 flex items-center justify-between text-[12px] border border-primary-fixed-dim/60"><div class="flex flex-col"> <p class="font-bold text-on-primary-fixed">Rabies Booster</p> <p class="text-on-primary-fixed-variant text-[11px]">Due in 12 days • Nov 2024</p></div><button class="px-3.5 py-1 rounded-full bg-primary text-on-primary font-label text-[11px] font-bold shadow-xs active:scale-95" onclick="openBookingModal('Rabies Vaccine Booster', 'PetCare Vet Clinic', '₹450')">Book</button></div></div>
+</div>
+</section>
+</main>
+<!-- ========================================== -->
+<!-- MATERIAL 3 BOTTOM SHEET BOOKING MODAL     -->
+<!-- ========================================== -->
+<div class="absolute inset-0 z-50 bg-on-surface/40 backdrop-blur-xs flex items-end justify-center m3-modal-backdrop" id="booking-modal-overlay">
+<div class="w-full bg-surface-container-lowest rounded-t-3xl p-5 shadow-m3-elevation-3 border-t border-outline-variant/30 flex flex-col gap-4 max-h-[85vh] overflow-y-auto m3-sheet-content" id="modal-sheet">
+<div class="w-12 h-1 rounded-full bg-on-surface/30 mx-auto cursor-pointer" onclick="closeBookingModal()"></div>
+<div class="flex items-start justify-between">
+<div>
+<span class="font-label text-[11px] text-primary font-bold uppercase tracking-wider">Book Care Slot</span>
+<h2 class="font-headline text-[18px] font-bold text-on-surface" id="modal-service-title">Full Spa Grooming</h2>
+<p class="font-body text-[12px] text-on-surface-variant" id="modal-provider-name">Happy Paws Salon &amp; Spa</p>
+</div>
+<button class="w-8 h-8 rounded-full bg-surface-container flex items-center justify-center text-outline hover:text-on-surface active:scale-95" onclick="closeBookingModal()">
+<span class="material-symbols-outlined text-[18px]">close</span>
+</button>
+</div>
+<!-- Selected Pet -->
+<div class="flex flex-col gap-1.5">
+<label class="font-label text-[11px] font-bold text-on-surface-variant uppercase">Selected Pet</label>
+<div class="flex items-center gap-2.5 p-2.5 rounded-xl bg-surface-container-high border border-outline-variant/30">
+<span class="material-symbols-outlined text-primary text-[20px]" style="font-variation-settings: 'FILL' 1;">pets</span>
+<span class="font-title text-[13px] font-semibold text-on-surface">Bruno (Golden Retriever, 28.2 kg)</span>
+</div>
+</div>
+<!-- Date Selection -->
+<div class="flex flex-col gap-1.5">
+<label class="font-label text-[11px] font-bold text-on-surface-variant uppercase">Select Date</label>
+<div class="grid grid-cols-3 gap-2">
+<button class="booking-date-btn p-2 rounded-xl bg-primary text-on-primary text-center font-label text-[12px] font-semibold" onclick="selectBookingDate(this)">Today<br><span class="text-[10px] font-normal">Nov 2</span></button>
+<button class="booking-date-btn p-2 rounded-xl bg-surface-container-high text-on-surface text-center font-label text-[12px] font-medium border border-outline-variant/40 hover:bg-surface-container-highest" onclick="selectBookingDate(this)">Tomorrow<br><span class="text-[10px] font-normal">Nov 3</span></button>
+<button class="booking-date-btn p-2 rounded-xl bg-surface-container-high text-on-surface text-center font-label text-[12px] font-medium border border-outline-variant/40 hover:bg-surface-container-highest" onclick="selectBookingDate(this)">Mon<br><span class="text-[10px] font-normal">Nov 4</span></button>
+</div>
+</div>
+<!-- Time Slots -->
+<div class="flex flex-col gap-1.5">
+<label class="font-label text-[11px] font-bold text-on-surface-variant uppercase">Available Time Slot</label>
+<div class="grid grid-cols-3 gap-2">
+<button class="booking-time-btn py-2 rounded-xl bg-secondary-container text-on-secondary-container font-label text-[12px] font-semibold border border-secondary" onclick="selectBookingTime(this)">10:30 AM</button>
+<button class="booking-time-btn py-2 rounded-xl bg-surface-container-high text-on-surface font-label text-[12px] font-medium border border-outline-variant/30 hover:bg-surface-container-highest" onclick="selectBookingTime(this)">02:00 PM</button>
+<button class="booking-time-btn py-2 rounded-xl bg-surface-container-high text-on-surface font-label text-[12px] font-medium border border-outline-variant/30 hover:bg-surface-container-highest" onclick="selectBookingTime(this)">04:30 PM</button>
+</div>
+</div>
+<!-- Confirmation Footer -->
+<div class="flex items-center justify-between pt-2 border-t border-surface-container-high/70">
+<div>
+<span class="font-label text-[10px] text-on-surface-variant uppercase font-medium">Total Payable</span>
+<p class="font-title text-[18px] text-primary font-bold" id="modal-price">₹599</p>
+</div>
+<button class="px-6 py-2.5 rounded-full bg-primary text-on-primary font-label text-[13px] font-semibold shadow-xs hover:shadow-m3-elevation-1 active:scale-95 transition-all" onclick="confirmBookingAction()">Confirm Booking</button>
+</div>
+</div>
+</div>
+<!-- ========================================== -->
+<!-- M3 NOTIFICATION BOTTOM SHEET MODAL        -->
+<!-- ========================================== -->
+<div class="absolute inset-0 z-50 bg-on-surface/40 backdrop-blur-xs flex items-end justify-center m3-modal-backdrop" id="notif-modal-overlay">
+<div class="w-full bg-surface-container-lowest rounded-t-3xl p-5 shadow-m3-elevation-3 border-t border-outline-variant/30 flex flex-col gap-3.5 max-h-[85vh] overflow-y-auto m3-sheet-content" id="notif-sheet">
+<div class="w-12 h-1 rounded-full bg-on-surface/30 mx-auto cursor-pointer" onclick="closeNotificationsModal()"></div>
+<div class="flex items-center justify-between pb-1 border-b border-surface-container-high/70">
+<div>
+<h2 class="font-headline text-[18px] font-bold text-on-surface">Notifications</h2>
+<p class="font-body text-[12px] text-on-surface-variant">Stay updated with Bruno's health &amp; care</p>
+</div>
+<div class="flex items-center gap-2">
+<button class="font-label text-[12px] text-primary font-semibold hover:underline" onclick="markAllNotificationsAsRead()">Mark all read</button>
+<button class="w-8 h-8 rounded-full bg-surface-container flex items-center justify-center text-outline hover:text-on-surface active:scale-95" onclick="closeNotificationsModal()">
+<span class="material-symbols-outlined text-[18px]">close</span>
+</button>
+</div>
+</div>
+<div class="flex flex-col gap-2.5 pt-1">
+<!-- Rabies booster notice -->
+<div class="p-3 rounded-2xl bg-primary-fixed/30 border border-primary-fixed-dim/50 flex flex-col gap-2 transition-colors notif-item" id="notif-item-1">
+<div class="flex items-start gap-3">
+<div class="w-9 h-9 rounded-full bg-primary text-on-primary flex items-center justify-center shrink-0">
+<span class="material-symbols-outlined text-[19px]">vaccines</span>
+</div>
+<div class="flex-1 min-w-0">
+<div class="flex items-center justify-between">
+<h3 class="font-title text-[13px] font-bold text-on-surface">Rabies booster due in 12 days</h3>
+<span class="text-[10px] font-semibold text-primary">Due Soon</span>
+</div>
+<p class="font-body text-[12px] text-on-surface-variant mt-0.5">Required annual immunization check for Bruno.</p>
+</div>
+</div>
+</div>
+<!-- Appointment Confirmed -->
+<div class="p-3 rounded-2xl bg-surface-container-low border border-outline-variant/30 flex items-start gap-3 notif-item" id="notif-item-2">
+<div class="w-9 h-9 rounded-full bg-secondary-fixed text-secondary flex items-center justify-center shrink-0">
+<span class="material-symbols-outlined text-[19px]">event_available</span>
+</div>
+<div class="flex-1 min-w-0">
+<div class="flex items-center justify-between">
+<h3 class="font-title text-[13px] font-bold text-on-surface">Appointment Confirmed</h3>
+<span class="text-[10px] text-on-surface-variant">Today 9:15 AM</span>
+</div>
+<p class="font-body text-[12px] text-on-surface-variant mt-0.5">Happy Paws Grooming today at 10:30 AM.</p>
+</div>
+</div>
+</div>
+</div>
+</div>
+<!-- Floating Toast Notification inside Phone -->
+<div class="hidden absolute bottom-20 inset-x-4 mx-auto z-50 bg-inverse-surface text-inverse-on-surface px-4 py-3 rounded-xl shadow-m3-elevation-2 flex items-center justify-between gap-3 text-[13px] font-body transition-all" id="toast-snackbar">
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-secondary-fixed text-[18px]">check_circle</span>
+<span id="toast-message">Action successful</span>
+</div>
+<button class="text-primary-fixed-dim font-semibold text-[12px]" onclick="document.getElementById('toast-snackbar').classList.add('hidden')">DISMISS</button>
+</div>
+<!-- ========================================== -->
+<!-- MATERIAL 3 BOTTOM NAVIGATION BAR           -->
+<!-- ========================================== -->
+<div class="absolute bottom-0 inset-x-0 z-30 bg-surface-container border-t border-surface-container-highest/60 select-none">
+<nav class="h-16 flex items-center justify-around px-2">
+<!-- Item 1: Home -->
+<button class="nav-item-btn flex flex-col items-center justify-center flex-1 py-1 group select-none active:scale-95 transition-transform text-on-surface-variant" id="nav-home" onclick="navigateToTab('home')" type="button">
+<div class="nav-pill w-14 h-7 rounded-full flex items-center justify-center mb-0.5 transition-colors duration-200">
+<span class="material-symbols-outlined text-[20px] font-medium">pets</span>
+</div>
+<span class="font-label text-[11px] font-bold tracking-wide">Home</span>
+</button>
+<!-- Item 2: Explore -->
+<button class="nav-item-btn flex flex-col items-center justify-center flex-1 py-1 group text-on-surface-variant hover:text-on-surface select-none active:scale-95 transition-transform" id="nav-explore" onclick="navigateToTab('explore')" type="button">
+<div class="nav-pill w-14 h-7 rounded-full flex items-center justify-center mb-0.5 group-hover:bg-surface-container-highest transition-colors duration-200">
+<span class="material-symbols-outlined text-[20px] font-medium">explore</span>
+</div>
+<span class="font-label text-[11px] font-medium tracking-wide">Explore</span>
+</button>
+<!-- Item 3: Bookings -->
+<button class="nav-item-btn flex flex-col items-center justify-center flex-1 py-1 group text-on-surface-variant hover:text-on-surface select-none active:scale-95 transition-transform" id="nav-bookings" onclick="navigateToTab('bookings')" type="button">
+<div class="nav-pill w-14 h-7 rounded-full flex items-center justify-center mb-0.5 group-hover:bg-surface-container-highest transition-colors duration-200">
+<span class="material-symbols-outlined text-[20px] font-medium">calendar_month</span>
+</div>
+<span class="font-label text-[11px] font-medium tracking-wide">Bookings</span>
+</button>
+<!-- Item 4: Profile -->
+<button class="nav-item-btn flex flex-col items-center justify-center flex-1 py-1 group hover:text-on-surface select-none active:scale-95 transition-transform text-on-surface" id="nav-profile" onclick="navigateToTab('profile')" type="button">
+<div class="nav-pill w-14 h-7 rounded-full flex items-center justify-center mb-0.5 group-hover:bg-surface-container-highest transition-colors duration-200 bg-primary-container text-on-primary-container">
+<span class="material-symbols-outlined text-[20px] font-bold active-icon-fill">account_circle</span>
+</div>
+<span class="font-label text-[11px] font-medium tracking-wide">Profile</span>
+</button>
+</nav>
+<!-- Android System Gesture Pill -->
+<div class="h-3 pb-1 w-full flex items-center justify-center">
+<div class="w-24 h-1 rounded-full bg-on-surface/40"></div>
+</div>
+</div>
+</div>
+</div>
+<!-- ================================================= -->
+<!-- INTERACTIVE TAB & MODAL JAVASCRIPT LOGIC          -->
+<!-- ================================================= -->
+<script>
+  function navigateToTab(tabName) {
+    const tabs = ['home', 'explore', 'bookings', 'profile'];
+    const titles = {
+      home: 'Indiranagar, Bengaluru',
+      explore: 'Explore Care Services',
+      bookings: 'Scheduled Bookings',
+      profile: "Bruno's Passbook"
+    };
+    const subTitleEl = document.getElementById('top-bar-subheading');
+    if (subTitleEl && titles[tabName]) {
+      subTitleEl.textContent = titles[tabName];
+    }
+    tabs.forEach(t => {
+      const view = document.getElementById('view-' + t);
+      const navBtn = document.getElementById('nav-' + t);
+      if (view) {
+        if (t === tabName) {
+          view.classList.add('active-view');
+        } else {
+          view.classList.remove('active-view');
+        }
+      }
+      if (navBtn) {
+        const pill = navBtn.querySelector('.nav-pill');
+        const label = navBtn.querySelector('span:last-child');
+        const icon = navBtn.querySelector('span.material-symbols-outlined');
+        if (t === tabName) {
+          navBtn.classList.remove('text-on-surface-variant');
+          navBtn.classList.add('text-on-surface');
+          if (pill) { pill.classList.add('bg-primary-container', 'text-on-primary-container'); }
+          if (label) { label.classList.add('font-bold'); label.classList.remove('font-medium'); }
+          if (icon) { icon.classList.add('active-icon-fill'); }
+        } else {
+          navBtn.classList.add('text-on-surface-variant');
+          navBtn.classList.remove('text-on-surface');
+          if (pill) { pill.classList.remove('bg-primary-container', 'text-on-primary-container'); }
+          if (label) { label.classList.remove('font-bold'); label.classList.add('font-medium'); }
+          if (icon) { icon.classList.remove('active-icon-fill'); }
+        }
+      }
+    });
+    const scrollContainer = document.getElementById('app-scroll-container');
+    if (scrollContainer) {
+      scrollContainer.scrollTo({ top: 0, behavior: 'smooth' });
+    }
+  }
+  function replayBonesLoading(customTitle) {
+    const overlay = document.getElementById('loading-overlay');
+    const bar = document.getElementById('loading-bar-fill');
+    const heading = document.getElementById('loading-heading');
+    if (heading && customTitle) {
+      heading.innerHTML = customTitle + ' <span class="inline-flex tracking-widest text-primary animate-pulse">...</span>';
+    }
+    if (overlay) {
+      overlay.classList.remove('hidden');
+      overlay.style.opacity = '1';
+      if (bar) bar.style.width = '20%';
+      // Reset animations
+      const bone1 = overlay.querySelector('.bone-fall-1');
+      const bone2 = overlay.querySelector('.bone-fall-2');
+      const bone3 = overlay.querySelector('.bone-fall-3');
+      const bowl = overlay.querySelector('.bowl-react');
+      [bone1, bone2, bone3, bowl].forEach(el => {
+        if (el) {
+          el.style.animation = 'none';
+          void el.offsetHeight;
+          el.style.animation = '';
+        }
+      });
+      setTimeout(() => {
+        if (bar) bar.style.width = '100%';
+      }, 150);
+      setTimeout(() => {
+        dismissLoadingOverlay();
+      }, 2000);
+    }
+  }
+  function dismissLoadingOverlay() {
+    const overlay = document.getElementById('loading-overlay');
+    if (overlay) {
+      overlay.style.opacity = '0';
+      setTimeout(() => {
+        overlay.classList.add('hidden');
+      }, 250);
+    }
+  }
+  function openBookingModal(serviceTitle, providerName, price) {
+    const t = document.getElementById('modal-service-title');
+    const p = document.getElementById('modal-provider-name');
+    const pr = document.getElementById('modal-price');
+    if (t) t.textContent = serviceTitle;
+    if (p) p.textContent = providerName;
+    if (pr) pr.textContent = price;
+    const overlay = document.getElementById('booking-modal-overlay');
+    if (overlay) overlay.classList.add('open');
+  }
+  function closeBookingModal() {
+    const overlay = document.getElementById('booking-modal-overlay');
+    if (overlay) overlay.classList.remove('open');
+  }
+  function selectBookingDate(btn) {
+    document.querySelectorAll('.booking-date-btn').forEach(b => {
+      b.classList.remove('bg-primary', 'text-on-primary', 'font-semibold');
+      b.classList.add('bg-surface-container-high', 'text-on-surface', 'font-medium');
+    });
+    btn.classList.add('bg-primary', 'text-on-primary', 'font-semibold');
+    btn.classList.remove('bg-surface-container-high', 'text-on-surface', 'font-medium');
+  }
+  function selectBookingTime(btn) {
+    document.querySelectorAll('.booking-time-btn').forEach(b => {
+      b.classList.remove('bg-secondary-container', 'text-on-secondary-container', 'border-secondary', 'font-semibold');
+      b.classList.add('bg-surface-container-high', 'text-on-surface', 'font-medium');
+    });
+    btn.classList.add('bg-secondary-container', 'text-on-secondary-container', 'border-secondary', 'font-semibold');
+    btn.classList.remove('bg-surface-container-high', 'text-on-surface', 'font-medium');
+  }
+  function confirmBookingAction() {
+    closeBookingModal();
+    showToast('Appointment booked for Bruno! Check Bookings.');
+    const badge = document.getElementById('booking-badge-counter');
+    if (badge) badge.textContent = '3 Active';
+  }
+  function openNotificationsModal() {
+    const overlay = document.getElementById('notif-modal-overlay');
+    if (overlay) overlay.classList.add('open');
+  }
+  function closeNotificationsModal() {
+    const overlay = document.getElementById('notif-modal-overlay');
+    if (overlay) overlay.classList.remove('open');
+  }
+  function markAllNotificationsAsRead() {
+    const badge = document.getElementById('notif-badge');
+    if (badge) badge.classList.add('hidden');
+    document.querySelectorAll('.notif-item').forEach(el => {
+      el.classList.remove('bg-primary-fixed/30');
+      el.classList.add('opacity-70');
+    });
+    showToast('All notifications marked as read.');
+  }
+  function showToast(msg) {
+    const toast = document.getElementById('toast-snackbar');
+    const txt = document.getElementById('toast-message');
+    if (txt) txt.textContent = msg;
+    if (toast) {
+      toast.classList.remove('hidden');
+      setTimeout(() => {
+        toast.classList.add('hidden');
+      }, 3000);
+    }
+  }
+  function toggleFavorite(btn) {
+    const icon = btn.querySelector('.material-symbols-outlined');
+    if (icon) {
+      if (icon.textContent === 'bookmark_border') {
+        icon.textContent = 'bookmark';
+        icon.classList.add('text-primary');
+        showToast('Saved to your favorites!');
+      } else {
+        icon.textContent = 'bookmark_border';
+        icon.classList.remove('text-primary');
+        showToast('Removed from favorites.');
+      }
+    }
+  }
+  function filterExploreTag(tag, btn) {
+    document.querySelectorAll('.explore-chip').forEach(b => {
+      b.classList.remove('bg-primary', 'text-on-primary', 'font-semibold');
+      b.classList.add('bg-surface-container-high', 'text-on-surface', 'font-medium');
+    });
+    btn.classList.add('bg-primary', 'text-on-primary', 'font-semibold');
+    btn.classList.remove('bg-surface-container-high', 'text-on-surface', 'font-medium');
+    const cards = document.querySelectorAll('.explore-card');
+    cards.forEach(c => {
+      const cat = c.getAttribute('data-category') || '';
+      const price = parseInt(c.getAttribute('data-price') || '0', 10);
+      const rating = parseFloat(c.getAttribute('data-rating') || '0');
+      let visible = false;
+      if (tag === 'All') visible = true;
+      else if (tag === 'Under ₹500' && price <= 500) visible = true;
+      else if (tag === 'Top Rated' && rating >= 4.85) visible = true;
+      else if (cat.toLowerCase().includes(tag.toLowerCase())) visible = true;
+      c.style.display = visible ? 'flex' : 'none';
+    });
+  }
+  function quickFilterExplore(tag) {
+    navigateToTab('explore');
+    const targetBtn = Array.from(document.querySelectorAll('.explore-chip')).find(b => b.textContent.trim().toLowerCase() === tag.toLowerCase());
+    if (targetBtn) {
+      filterExploreTag(tag, targetBtn);
+    } else {
+      const allBtn = document.querySelector('.explore-chip');
+      if (allBtn) filterExploreTag('All', allBtn);
+      filterExploreProviders(tag);
+    }
+  }
+  function filterExploreProviders(query) {
+    const q = query.toLowerCase().trim();
+    document.querySelectorAll('.explore-card').forEach(c => {
+      const title = (c.getAttribute('data-title') || '').toLowerCase();
+      const cat = (c.getAttribute('data-category') || '').toLowerCase();
+      if (!q || title.includes(q) || cat.includes(q)) {
+        c.style.display = 'flex';
+      } else {
+        c.style.display = 'none';
+      }
+    });
+  }
+  function filterHomeCards(query) {
+    const q = query.toLowerCase().trim();
+    document.querySelectorAll('.service-chip').forEach(c => {
+      const title = (c.getAttribute('data-title') || '').toLowerCase();
+      if (!q || title.includes(q)) {
+        c.style.display = 'flex';
+      } else {
+        c.style.display = 'none';
+      }
+    });
+  }
+  function switchBookingTab(tab, btn) {
+    document.querySelectorAll('.booking-seg-btn').forEach(b => {
+      b.classList.remove('bg-surface-container-lowest', 'text-on-surface', 'font-bold', 'shadow-xs');
+      b.classList.add('text-on-surface-variant', 'font-semibold');
+    });
+    btn.classList.add('bg-surface-container-lowest', 'text-on-surface', 'font-bold', 'shadow-xs');
+    btn.classList.remove('text-on-surface-variant', 'font-semibold');
+    const upcoming = document.getElementById('booking-list-upcoming');
+    const completed = document.getElementById('booking-list-completed');
+    const cancelled = document.getElementById('booking-list-cancelled');
+    if (upcoming) upcoming.classList.add('hidden');
+    if (completed) completed.classList.add('hidden');
+    if (cancelled) cancelled.classList.add('hidden');
+    if (tab === 'upcoming' && upcoming) upcoming.classList.remove('hidden');
+    if (tab === 'completed' && completed) completed.classList.remove('hidden');
+    if (tab === 'cancelled' && cancelled) cancelled.classList.remove('hidden');
+  }
+  // Close modals on escape key or backdrop tap
+  document.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape') {
+      closeBookingModal();
+      closeNotificationsModal();
+      dismissLoadingOverlay();
+    }
+  });
+</script>
+
+
+
+
+
+
+</body></html>

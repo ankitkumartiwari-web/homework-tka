@@ -85,6 +85,21 @@ export const generatedHomework: Subject[] = [
         ]
       },
       {
+        "day": "25-nov-2026",
+        "label": "25 Nov 2026",
+        "homeworks": [
+          {
+            "id": 1000,
+            "title": "Behance",
+            "slug": "behance-html",
+            "date": "2026-11-25",
+            "description": "Homework file Behance for 25 Nov 2026.",
+            "live": "/homework/html/25-nov-2026/behance.html",
+            "github": "https://github.com/ankitkumartiwari-web/homework-tka/blob/main/docs/homework/html/25-nov-2026/behance.html"
+          }
+        ]
+      },
+      {
         "day": "6-aug-2026",
         "label": "6 Aug 2026",
         "homeworks": [
@@ -144,6 +159,15 @@ export const generatedHomework: Subject[] = [
           {
             "id": 1000,
             "title": "Task1",
+            "slug": "task1-html",
+            "date": "2026-10-10",
+            "description": "Homework file Task1 for 10 Oct 2026.",
+            "live": "/homework/python/10-oct-2026/task1.html",
+            "github": "https://github.com/ankitkumartiwari-web/homework-tka/blob/main/docs/homework/python/10-oct-2026/task1.html"
+          },
+          {
+            "id": 1001,
+            "title": "Task1",
             "slug": "task1-ipynb",
             "date": "2026-10-10",
             "description": "Homework file Task1 for 10 Oct 2026.",
@@ -158,6 +182,15 @@ export const generatedHomework: Subject[] = [
         "homeworks": [
           {
             "id": 1000,
+            "title": "Oct12hw",
+            "slug": "oct12hw-html",
+            "date": "2026-10-12",
+            "description": "Homework file Oct12hw for 12 Oct 2026.",
+            "live": "/homework/python/12-oct-2026/oct12hw.html",
+            "github": "https://github.com/ankitkumartiwari-web/homework-tka/blob/main/docs/homework/python/12-oct-2026/oct12hw.html"
+          },
+          {
+            "id": 1001,
             "title": "Oct12hw",
             "slug": "oct12hw-ipynb",
             "date": "2026-10-12",
@@ -174,6 +207,15 @@ export const generatedHomework: Subject[] = [
           {
             "id": 1000,
             "title": "Oct20",
+            "slug": "oct20-html",
+            "date": "2026-10-20",
+            "description": "Homework file Oct20 for 20 Oct 2026.",
+            "live": "/homework/python/20-oct-2026/oct20.html",
+            "github": "https://github.com/ankitkumartiwari-web/homework-tka/blob/main/docs/homework/python/20-oct-2026/oct20.html"
+          },
+          {
+            "id": 1001,
+            "title": "Oct20",
             "slug": "oct20-ipynb",
             "date": "2026-10-20",
             "description": "Homework file Oct20 for 20 Oct 2026.",
@@ -188,6 +230,15 @@ export const generatedHomework: Subject[] = [
         "homeworks": [
           {
             "id": 1000,
+            "title": "Operator Overloading",
+            "slug": "operator-overloading-html",
+            "date": "2026-10-27",
+            "description": "Homework file Operator Overloading for 27 Oct 2026.",
+            "live": "/homework/python/27-oct-2026/operator_overloading.html",
+            "github": "https://github.com/ankitkumartiwari-web/homework-tka/blob/main/docs/homework/python/27-oct-2026/operator_overloading.html"
+          },
+          {
+            "id": 1001,
             "title": "Operator Overloading",
             "slug": "operator-overloading-ipynb",
             "date": "2026-10-27",
